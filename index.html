@@ -5,60 +5,79 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1" />
 <title>My English ABC</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
-<link href="https://fonts.googleapis.com/css2?family=Atkinson+Hyperlegible:ital,wght@0,400;0,700;1,400&family=Oswald:wght@500;600;700&display=swap" rel="stylesheet"><style>
+<link href="https://fonts.googleapis.com/css2?family=Atkinson+Hyperlegible:ital,wght@0,400;0,700;1,400&family=Cinzel:wght@500;600;700&family=Caveat:wght@600;700&display=swap" rel="stylesheet"><style>
   :root{
-    --bg:#FAFAF7;
-    --surface:#FFFFFF;
-    --surface-2:#F0F0EC;
-    --ink:#1A1A1A;
-    --ink-soft:#5A5955;
-    --line:rgba(26,26,26,0.12);
-    --line-strong:rgba(26,26,26,0.24);
+    --bg:#DCD0A0;
+    --surface:#EDE3C2;
+    --surface-2:#CFC086;
+    --ink:#241F12;
+    --ink-soft:#5C5538;
+    --line:rgba(36,31,18,0.20);
+    --line-strong:rgba(36,31,18,0.38);
 
-    --l-red:#E32017;        --l-red-deep:#B71C13;
-    --l-blue:#0019A8;       --l-blue-deep:#001070;
-    --l-green:#00782A;      --l-green-deep:#00591F;
-    --l-brown:#B36305;      --l-brown-deep:#8B4D04;
-    --l-magenta:#9B0056;    --l-magenta-deep:#7A0044;
-    --l-purple:#6950A1;     --l-purple-deep:#50397F;
-    --l-lightblue:#0098D4;  --l-lightblue-deep:#006D9A;
-    --l-yellow:#FFD300;     --l-yellow-deep:#9C7A00;
-    --l-pink:#F3A9BB;       --l-pink-deep:#C44368;
-    --l-turquoise:#95CDBA;  --l-turquoise-deep:#3F8F71;
-    --l-grey:#A0A5A9;       --l-grey-deep:#5C6166;
+    --l-red:#8B2318;        --l-red-deep:#631910;
+    --l-blue:#1F6B5C;       --l-blue-deep:#154A40;
+    --l-green:#2F5233;      --l-green-deep:#1E3A21;
+    --l-brown:#6B4423;      --l-brown-deep:#4A2E18;
+    --l-magenta:#4A3B5C;    --l-magenta-deep:#332940;
+    --l-purple:#5C3B6B;     --l-purple-deep:#402850;
+    --l-lightblue:#2E7D8C;  --l-lightblue-deep:#205A66;
+    --l-yellow:#C9A227;     --l-yellow-deep:#8C6F12;
+    --l-pink:#B5651D;       --l-pink-deep:#874A14;
+    --l-turquoise:#2F8F6E;  --l-turquoise-deep:#1F6B52;
+    --l-grey:#6B6555;       --l-grey-deep:#4A4538;
 
-    --radius:14px;
-    --radius-sm:10px;
+    --radius:10px;
+    --radius-sm:7px;
   }
   *{box-sizing:border-box;}
   html,body{margin:0;padding:0;}
   body{
-    background:var(--bg);
+    background:
+      radial-gradient(ellipse at center, transparent 45%, rgba(36,31,18,0.18) 100%),
+      radial-gradient(circle at 18% 12%, rgba(47,82,51,0.07), transparent 30%),
+      radial-gradient(circle at 88% 78%, rgba(36,31,18,0.09), transparent 38%),
+      radial-gradient(ellipse 60% 35% at 8% 92%, rgba(107,68,35,0.12), transparent 70%),
+      radial-gradient(ellipse 45% 30% at 95% 8%, rgba(36,31,18,0.08), transparent 70%),
+      radial-gradient(ellipse 30% 22% at 60% 38%, rgba(139,35,24,0.04), transparent 75%),
+      var(--bg);
     color:var(--ink);
     font-family:'Atkinson Hyperlegible', system-ui, sans-serif;
     min-height:100vh;
     -webkit-font-smoothing:antialiased;
   }
-  .display{font-family:'Oswald', 'Atkinson Hyperlegible', sans-serif; font-weight:600; text-transform:none; letter-spacing:0.2px;}
+  body::after{
+    content:"";
+    position:fixed;inset:0;z-index:9999;pointer-events:none;
+    background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='180' height='180'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='2' stitchTiles='stitch'/%3E%3CfeColorMatrix type='saturate' values='0'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.5'/%3E%3C/svg%3E");
+    background-size:180px 180px;
+    opacity:0.16;
+    mix-blend-mode:multiply;
+  }
+  .display{font-family:'Cinzel', 'Atkinson Hyperlegible', serif; font-weight:600; letter-spacing:0.3px;
+    text-shadow:0 1px 0 rgba(255,255,255,0.18), 0 -1px 0 rgba(36,31,18,0.18);}
+  .stamp{font-family:'Caveat', cursive; letter-spacing:0.3px; font-weight:700;}
   #root{max-width:560px;margin:0 auto;min-height:100vh;display:flex;flex-direction:column;}
   button{font-family:inherit;cursor:pointer;}
   a{color:inherit;}
-  :focus-visible{outline:2.5px solid var(--l-blue-deep);outline-offset:2px;border-radius:6px;}
+  :focus-visible{outline:2.5px solid var(--l-yellow-deep);outline-offset:2px;border-radius:6px;}
   svg{display:block;}
 
   .topbar{
     display:flex;align-items:center;justify-content:space-between;
-    padding:14px 18px;border-bottom:1px solid var(--line);
+    padding:14px 18px;border-bottom:3px double var(--line-strong);
     position:sticky;top:0;background:var(--surface);z-index:5;
   }
   .brand{display:flex;align-items:center;gap:11px;}
   .brand-badge{
-    width:38px;height:38px;border-radius:50%;
+    width:40px;height:40px;border-radius:50%;
     display:flex;align-items:center;justify-content:center;
     flex-shrink:0;overflow:hidden;
+    border:3px solid var(--l-yellow-deep);
+    box-shadow:0 0 0 1.5px var(--surface), 0 0 0 3px var(--l-yellow-deep), 0 2px 4px rgba(43,27,18,0.3);
   }
   .brand-badge img{width:100%;height:100%;object-fit:cover;}
-  .brand h1{font-size:18px;margin:0;font-weight:600;letter-spacing:0.2px;color:var(--ink);}
+  .brand h1{font-size:16px;margin:0;font-weight:600;letter-spacing:0.2px;color:var(--ink);font-family:'Cinzel',serif;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;max-width:46vw;}
   .level-pill{
     display:flex;align-items:center;gap:8px;
     background:var(--surface-2);
@@ -66,7 +85,7 @@
     padding:6px 11px;border-radius:999px;font-size:12.5px;color:var(--ink-soft);
   }
   .lv-num{
-    background:var(--l-blue);color:#FFFFFF;font-weight:bold;
+    background:var(--l-yellow);color:#FFFFFF;font-weight:bold;
     border-radius:50%;width:19px;height:19px;display:flex;align-items:center;justify-content:center;
     font-size:10.5px;
   }
@@ -84,41 +103,59 @@
 
   .xp-row{display:flex;align-items:center;gap:10px;margin-top:9px;}
   .xp-bar-track{flex:1;height:8px;background:var(--surface-2);border-radius:999px;overflow:hidden;border:1px solid var(--line);}
-  .xp-bar-fill{height:100%;background:linear-gradient(90deg,var(--l-red),var(--l-blue));border-radius:999px;transition:width .5s ease;}
+  .xp-bar-fill{height:100%;background:linear-gradient(90deg,var(--l-red),var(--l-yellow));border-radius:999px;transition:width .5s ease;}
   .xp-label{font-size:11.5px;color:var(--ink-soft);white-space:nowrap;}
   .xp-label.strong{color:var(--ink);font-weight:600;}
 
-  .streak{display:flex;align-items:center;gap:6px;font-size:13px;color:var(--l-brown-deep);font-weight:600;}
+  .streak{display:flex;align-items:center;gap:6px;font-size:13px;color:var(--l-pink-deep);font-weight:600;}
 
-  .eyebrow{font-size:11.5px;letter-spacing:1.5px;text-transform:uppercase;color:var(--ink-soft);margin:0 0 6px;font-weight:700;}
+  .eyebrow{font-family:'Special Elite',monospace;font-size:11px;letter-spacing:1px;text-transform:uppercase;color:var(--ink-soft);margin:0 0 6px;font-weight:400;}
   h2.section-title{
-    font-weight:600;font-size:21px;margin:0 0 4px;letter-spacing:0.1px;color:var(--ink);
+    font-weight:600;font-size:21px;margin:0 0 4px;letter-spacing:0.2px;color:var(--ink);
   }
   p.section-sub{color:var(--ink-soft);font-size:13.5px;margin:0 0 14px;line-height:1.45;}
 
   .chalk-divider{width:46px;height:8px;margin:2px 0 16px;opacity:0.9;}
 
+  .torn-edge{
+    clip-path:polygon(
+      0% 1%, 4% 3%, 9% 0%, 15% 3%, 22% 1%, 29% 3%, 36% 0%, 44% 3%, 51% 1%, 58% 3%, 65% 0%, 73% 3%, 80% 1%, 87% 3%, 94% 0%, 100% 2%,
+      100% 99%, 95% 97%, 89% 100%, 82% 97%, 75% 100%, 68% 97%, 61% 100%, 54% 97%, 47% 100%, 40% 97%, 33% 100%, 26% 97%, 19% 100%, 12% 97%, 6% 100%, 0% 98%
+    );
+  }
+
   .mission-card{
-    background:linear-gradient(135deg, rgba(247,194,92,0.16), rgba(247,175,203,0.14));
+    position:relative;
+    background:linear-gradient(135deg, rgba(169,121,44,0.14), rgba(122,31,31,0.08));
     border:1px solid var(--line);
-    border-left:3px solid var(--l-blue);
+    border-left:3px solid var(--l-yellow-deep);
+    padding-top:22px;
   }
   .mission-card h3{margin:0 0 6px;font-size:19px;font-weight:600;color:var(--ink);}
   .mission-card p{margin:0 0 14px;font-size:13.5px;color:var(--ink-soft);line-height:1.5;}
+  .wax-seal{position:absolute;top:-14px;right:14px;filter:drop-shadow(0 3px 3px rgba(43,27,18,0.4));}
 
   .btn{
     border:none;border-radius:12px;padding:13px 18px;font-size:14.5px;font-weight:700;
     display:inline-flex;align-items:center;gap:8px;justify-content:center;
     transition:transform .12s ease, opacity .12s ease;
   }
-  .btn-primary{background:var(--l-red);color:#FFFFFF;}
+  .btn-primary{
+    background:var(--l-red);color:#FFFFFF;
+    box-shadow:inset 0 1px 0 rgba(255,255,255,0.22), inset 0 -2px 0 rgba(0,0,0,0.18), 0 3px 6px rgba(43,27,18,0.3);
+    text-shadow:0 1px 1px rgba(0,0,0,0.25);
+  }
   .btn-primary:active{transform:scale(0.97);}
   .btn-secondary{background:var(--surface);color:var(--ink);border:1.5px solid var(--line-strong);}
   .btn-secondary:active{transform:scale(0.97);}
   .btn-block{width:100%;}
   .btn-ghost{background:transparent;color:var(--ink-soft);border:none;font-size:13px;text-decoration:underline;padding:6px;}
 
-  .cat-grid{display:flex;flex-direction:column;gap:12px;}
+  .cat-grid{display:flex;flex-direction:column;gap:14px;}
+  .cat-grid .cat-card:nth-child(1){transform:rotate(-0.6deg);}
+  .cat-grid .cat-card:nth-child(2){transform:rotate(0.5deg);}
+  .cat-grid .cat-card:nth-child(3){transform:rotate(-0.4deg);}
+  .cat-grid .cat-card:active{transform:scale(0.99);}
   .cat-card{
     background:var(--surface);
     border:1px solid var(--line);
@@ -137,8 +174,8 @@
   .cat-card p{margin:0;font-size:12px;color:var(--ink-soft);}
   .cat-card .chev{margin-left:auto;opacity:0.5;color:var(--ink-soft);}
   .cat-classroom{--accent:var(--l-green);--accent-deep:var(--l-green-deep);}
-  .cat-grammar{--accent:var(--l-blue);--accent-deep:var(--l-blue-deep);}
-  .cat-survival{--accent:var(--l-magenta);--accent-deep:var(--l-magenta-deep);}
+  .cat-grammar{--accent:var(--l-yellow);--accent-deep:var(--l-yellow-deep);}
+  .cat-survival{--accent:var(--l-red);--accent-deep:var(--l-red-deep);}
 
   .backbar{display:flex;align-items:center;gap:10px;margin-bottom:14px;}
   .backbtn{background:var(--surface);border:1px solid var(--line);border-radius:10px;width:36px;height:36px;
@@ -149,7 +186,7 @@
     flex-shrink:0;background:var(--surface);border:1px solid var(--line);color:var(--ink-soft);
     padding:7px 13px;border-radius:999px;font-size:12.5px;white-space:nowrap;
   }
-  .chip.active{background:var(--l-blue);color:#FFFFFF;border-color:var(--l-blue-deep);font-weight:700;}
+  .chip.active{background:var(--l-yellow);color:#FFFFFF;border-color:var(--l-yellow-deep);font-weight:700;}
 
   .mode-grid{display:grid;grid-template-columns:1fr 1fr;gap:11px;}
   .mode-card{
@@ -200,8 +237,8 @@
     text-align:center;padding:26px 18px;gap:10px;position:relative;
     box-shadow:0 1px 2px rgba(43,36,23,0.04), 0 8px 22px rgba(43,36,23,0.06);
   }
-  .flashcard .face-label{position:absolute;top:14px;left:16px;font-size:10px;letter-spacing:1.2px;color:var(--ink-soft);text-transform:uppercase;}
-  .flashcard .main-word{font-family:'Oswald',sans-serif;font-size:26px;line-height:1.25;font-weight:600;color:var(--ink);}
+  .flashcard .face-label{position:absolute;top:14px;left:16px;font-family:'Special Elite',monospace;font-size:9.5px;letter-spacing:1px;color:var(--ink-soft);text-transform:uppercase;}
+  .flashcard .main-word{font-family:'Cinzel',serif;font-size:19px;line-height:1.45;font-weight:600;color:var(--ink);}
   .flashcard .sub-word{font-size:15px;color:var(--l-blue-deep);font-weight:600;}
   .flashcard .tip-text{font-size:12.5px;color:var(--ink-soft);margin-top:8px;}
   .flash-controls{display:flex;gap:10px;width:100%;margin-top:16px;}
@@ -210,7 +247,7 @@
   .btn-easy{background:rgba(0,120,42,0.10);color:var(--l-green-deep);border:1.5px solid var(--l-green-deep);}
   .btn-hard{background:rgba(227,32,23,0.10);color:var(--l-red-deep);border:1.5px solid var(--l-red-deep);}
 
-  .quiz-q{font-family:'Oswald',sans-serif;font-size:19px;font-weight:600;margin-bottom:16px;line-height:1.35;color:var(--ink);}
+  .quiz-q{font-family:'Cinzel',serif;font-size:16px;font-weight:600;margin-bottom:16px;line-height:1.5;color:var(--ink);}
   .quiz-opts{display:flex;flex-direction:column;gap:9px;}
   .opt{
     background:var(--surface);border:1px solid var(--line);border-radius:var(--radius-sm);
@@ -232,12 +269,12 @@
   .mem-meta{display:flex;justify-content:space-between;font-size:12px;color:var(--ink-soft);margin-bottom:10px;}
 
   .result-screen{text-align:center;padding:28px 10px;}
-  .result-screen .big-ic{margin:0 auto 14px;width:58px;height:58px;border-radius:50%;background:var(--surface-2);border:1px solid var(--line);display:flex;align-items:center;justify-content:center;color:var(--l-blue-deep);font-size:26px;}
+  .result-screen .big-ic{margin:0 auto 14px;width:58px;height:58px;border-radius:50%;background:var(--surface-2);border:1px solid var(--line);display:flex;align-items:center;justify-content:center;color:var(--l-yellow-deep);font-size:26px;}
   .result-screen h2{font-size:22px;font-weight:600;margin:0 0 6px;color:var(--ink);}
   .result-screen p{color:var(--ink-soft);font-size:13.5px;margin:0 0 18px;line-height:1.5;}
   .badge-pop{
     display:inline-flex;align-items:center;gap:8px;background:var(--surface);
-    border:1.5px solid var(--l-blue-deep);padding:9px 15px;border-radius:999px;
+    border:1.5px solid var(--l-yellow-deep);padding:9px 15px;border-radius:999px;
     font-size:12.5px;margin-bottom:18px;color:var(--ink);font-weight:600;
   }
 
@@ -245,7 +282,7 @@
   .badges-head{display:flex;align-items:center;justify-content:space-between;margin-bottom:2px;}
   .badges-count{font-size:12px;font-weight:700;color:var(--ink-soft);background:var(--surface-2);border:1px solid var(--line);padding:4px 10px;border-radius:999px;}
   .badge-group{margin-top:16px;}
-  .badge-group-title{font-size:11px;letter-spacing:1.1px;text-transform:uppercase;color:var(--ink-soft);font-weight:700;margin:0 0 8px;}
+  .badge-group-title{font-family:'Special Elite',monospace;font-size:10.5px;letter-spacing:0.8px;text-transform:uppercase;color:var(--ink-soft);font-weight:400;margin:0 0 8px;}
   .badge-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:9px;}
   .badge-tile{
     aspect-ratio:auto;min-height:84px;border-radius:var(--radius-sm);
@@ -258,7 +295,7 @@
     font-size:9.5px;line-height:1.2;font-weight:700;color:var(--ink);
     display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden;
   }
-  .badge-tile.earned{opacity:1;filter:none;border-color:var(--l-blue-deep);background:rgba(0,25,168,0.08);}
+  .badge-tile.earned{opacity:1;filter:none;border-color:var(--l-yellow-deep);background:rgba(169,121,44,0.14);}
   .badge-detail{
     margin-top:16px;background:var(--surface);border:1px solid var(--line-strong);border-radius:var(--radius-sm);
     padding:13px 14px;display:flex;align-items:center;gap:12px;
@@ -655,70 +692,87 @@ const ic = {fill:"none", stroke:"currentColor", strokeWidth:"1.6", strokeLinecap
 
 function IconHome({size=20}){
   return <svg width={size} height={size} viewBox="0 0 24 24" {...ic}>
-    <path d="M3 11.5 12 4l9 7.5"/>
-    <path d="M5.5 10v9a1 1 0 0 0 1 1h11a1 1 0 0 0 1-1v-9"/>
-    <path d="M9.5 20v-5.5h5V20"/>
+    <circle cx="12" cy="12" r="8.3"/>
+    <path d="M12 5.3v2.2M12 16.5v2.2M5.3 12h2.2M16.5 12h2.2" strokeWidth="1.3"/>
+    <path d="M12 7.3 14.1 12l-2.1 4.7L9.9 12Z" fill="currentColor" stroke="none"/>
   </svg>;
 }
 function IconClassroom({size=20}){
   return <svg width={size} height={size} viewBox="0 0 24 24" {...ic}>
-    <rect x="3.5" y="4.5" width="17" height="11" rx="1.5"/>
-    <path d="M7.5 18.5h9M12 15.5v3"/>
-    <path d="M7.5 8.5h5M7.5 11.5h8"/>
+    <path d="M5 4.5h11l3 3v11.5a1 1 0 0 1-1 1H5a1 1 0 0 1-1-1V5.5a1 1 0 0 1 1-1Z"/>
+    <path d="M16 4.5V7.5H19"/>
+    <path d="M6.8 11h7M6.8 13.7h9.5M6.8 16.4h6"/>
   </svg>;
 }
 function IconGrammar({size=20}){
   return <svg width={size} height={size} viewBox="0 0 24 24" {...ic}>
-    <path d="M9.5 4.5c-2 0-3 1-3 3v2.6c0 1-.6 1.9-2 1.9 1.4 0 2 .9 2 1.9V16.5c0 2 1 3 3 3"/>
-    <path d="M14.5 4.5c2 0 3 1 3 3v2.6c0 1 .6 1.9 2 1.9-1.4 0-2 .9-2 1.9V16.5c0 2-1 3-3 3"/>
+    <path d="M4.5 10.2c0-2.1 1.6-3.7 3.7-4.4a13 13 0 0 1 7.6 0c2.1.7 3.7 2.3 3.7 4.4"/>
+    <rect x="4.5" y="10.2" width="15" height="8" rx="1.3"/>
+    <path d="M4.5 13.7h15"/>
+    <rect x="10.4" y="12" width="3.2" height="3.6" rx="0.6"/>
   </svg>;
 }
 function IconSurvival({size=20}){
   return <svg width={size} height={size} viewBox="0 0 24 24" {...ic}>
-    <path d="M4 5.5h16a1 1 0 0 1 1 1V15a1 1 0 0 1-1 1H9.5l-4 4v-4H4a1 1 0 0 1-1-1V6.5a1 1 0 0 1 1-1Z"/>
-    <path d="M7.5 10h9M7.5 13h5.5"/>
+    <path d="M11 12.8v7.7M9.2 20.5h3.6"/>
+    <path d="M11 12.8c-2.7-1.3-3.8-3.7-3.1-6.2.5 1 1.2 1.6 1.9 1.7C9.3 6.4 9.8 4.6 11.3 3c.3 1.7 1.1 2.5 2 3.3 1 .9 1.9 2.1 1.6 3.8-.3 1.7-1.8 2.6-3.9 2.7Z"/>
   </svg>;
 }
 function IconBrowse({size=20}){
   return <svg width={size} height={size} viewBox="0 0 24 24" {...ic}>
-    <path d="M4 6c2.3-1.2 5.5-1.2 8 0 2.5-1.2 5.7-1.2 8 0v12.5c-2.3-1.2-5.5-1.2-8 0-2.5-1.2-5.7-1.2-8 0Z"/>
-    <path d="M12 6v12.5"/>
+    <ellipse cx="7" cy="6" rx="2.3" ry="1.6"/>
+    <path d="M7 6v12"/>
+    <ellipse cx="7" cy="18" rx="2.3" ry="1.6"/>
+    <path d="M9.3 6h7.7a2 2 0 0 1 2 2v8a2 2 0 0 1-2 2H9.3"/>
+    <path d="M12 9.6h5M12 12.6h5M12 15.6h3"/>
   </svg>;
 }
 function IconFlash({size=20}){
   return <svg width={size} height={size} viewBox="0 0 24 24" {...ic}>
-    <rect x="3.5" y="7.5" width="14" height="10" rx="2"/>
-    <rect x="6.5" y="4.5" width="14" height="10" rx="2"/>
+    <rect x="4" y="8" width="13" height="10" rx="1.5"/>
+    <rect x="7" y="5" width="13" height="10" rx="1.5"/>
+    <path d="M10.5 8.7h6.5"/>
   </svg>;
 }
 function IconQuiz({size=20}){
   return <svg width={size} height={size} viewBox="0 0 24 24" {...ic}>
-    <circle cx="12" cy="12" r="8.5"/>
-    <path d="M8.2 12.3 11 15l5-5.5"/>
+    <circle cx="10.3" cy="10.3" r="6.3"/>
+    <path d="M15 15l5.5 5.5"/>
+    <path d="M7.5 10.3l1.8 1.8 3.2-3.8"/>
   </svg>;
 }
 function IconMemory({size=20}){
   return <svg width={size} height={size} viewBox="0 0 24 24" {...ic}>
-    <rect x="3.5" y="3.5" width="7.5" height="7.5" rx="1.4"/>
-    <rect x="13" y="3.5" width="7.5" height="7.5" rx="1.4"/>
-    <rect x="3.5" y="13" width="7.5" height="7.5" rx="1.4"/>
-    <rect x="13" y="13" width="7.5" height="7.5" rx="1.4"/>
+    <circle cx="7.3" cy="7.3" r="3.3"/>
+    <circle cx="7.3" cy="7.3" r="0.9" fill="currentColor" stroke="none"/>
+    <path d="M9.6 9.6 18.3 18.3"/>
+    <path d="M15.3 15.3l2-2M17.4 17.4l2-2"/>
   </svg>;
 }
 function IconMap({size=20}){
   return <svg width={size} height={size} viewBox="0 0 24 24" {...ic}>
-    <circle cx="12" cy="5" r="2.1"/>
-    <circle cx="5" cy="19" r="2.1"/>
-    <circle cx="19" cy="19" r="2.1"/>
-    <path d="M12 7.1v3.2M12 10.3 6.2 16.9M12 10.3l5.8 6.6"/>
+    <rect x="4" y="5" width="16" height="14" rx="1.3"/>
+    <path d="M9 5v14M15 5v14" strokeDasharray="2 2.4"/>
+    <path d="M10 10l4 4M14 10l-4 4" strokeWidth="2"/>
   </svg>;
 }
 function IconChevronLeft({size=18}){
   return <svg width={size} height={size} viewBox="0 0 24 24" {...ic}><path d="M14.5 5 8 12l6.5 7"/></svg>;
 }
-function IconChalkDivider({size=46, color="var(--l-red)"}){
-  return <svg width={size} height="6" viewBox="0 0 46 6" style={{color}}>
-    <rect x="0" y="1" width="46" height="4" rx="2" fill="currentColor"/>
+function IconChalkDivider({size=120, color="var(--l-green-deep)"}){
+  return <svg width={size} height="12" viewBox="0 0 120 12" style={{color, margin:"6px 0 14px"}}>
+    <line x1="0" y1="6" x2="48" y2="6" stroke="currentColor" strokeWidth="1.6"/>
+    <path d="M60 1c5 1 8 4 8 5s-3 4-8 5c-5-1-8-4-8-5s3-4 8-5Z" fill="currentColor"/>
+    <line x1="3" y1="6" x2="0" y2="6" stroke="currentColor" strokeWidth="1.6"/>
+    <line x1="72" y1="6" x2="120" y2="6" stroke="currentColor" strokeWidth="1.6"/>
+  </svg>;
+}
+function IconWaxSeal({size=44}){
+  return <svg width={size} height={size} viewBox="0 0 60 60" style={{transform:"rotate(-9deg)"}}>
+    <circle cx="30" cy="30" r="25" fill="var(--l-yellow-deep)"/>
+    <circle cx="30" cy="30" r="25" fill="none" stroke="rgba(0,0,0,0.3)" strokeWidth="1"/>
+    <circle cx="30" cy="30" r="19" fill="none" stroke="rgba(255,255,255,0.3)" strokeWidth="1"/>
+    <path d="M30 15 L33 25 L43 25 L35 31 L38 41 L30 35 L22 41 L25 31 L17 25 L27 25 Z" fill="rgba(255,255,255,0.85)"/>
   </svg>;
 }
 function IconRoundel({size=38}){
@@ -870,8 +924,8 @@ function buildClusters(cat){
 
 const CATEGORIES = [
  {id:"classroom",title:"Classroom English",subtitle:"Comprendre les consignes en cours",Icon:IconClassroom,accent:"green",cls:"cat-classroom",items:CLASSROOM_ITEMS},
- {id:"grammar",title:"Mots qui bloquent",subtitle:"Pronoms, prépositions, verbes de base...",Icon:IconGrammar,accent:"blue",cls:"cat-grammar",groups:GRAMMAR_GROUPS},
- {id:"survival",title:"Survival Phrases",subtitle:"Pour oser parler à l'oral",Icon:IconSurvival,accent:"magenta",cls:"cat-survival",items:SURVIVAL_ITEMS},
+ {id:"grammar",title:"Mots qui bloquent",subtitle:"Pronoms, prépositions, verbes de base...",Icon:IconGrammar,accent:"yellow",cls:"cat-grammar",groups:GRAMMAR_GROUPS},
+ {id:"survival",title:"Survival Phrases",subtitle:"Pour oser parler à l'oral",Icon:IconSurvival,accent:"red",cls:"cat-survival",items:SURVIVAL_ITEMS},
 ];
 
 function getCategoryItems(cat, groupId){
@@ -905,47 +959,47 @@ function getLevelInfo(xp){
 
 const BADGES = [
  // Progression
- {id:"first_steps", emoji:"🌱", label:"Premiers pas", desc:"Termine ta toute première activité", group:"Progression"},
- {id:"level2", emoji:"🪜", label:"Niveau 2", desc:"Atteins le niveau 2", group:"Progression"},
- {id:"level3", emoji:"🧗", label:"Niveau 3", desc:"Atteins le niveau 3", group:"Progression"},
- {id:"level4", emoji:"🚵", label:"Niveau 4", desc:"Atteins le niveau 4", group:"Progression"},
- {id:"level5", emoji:"🏔️", label:"Niveau 5", desc:"Atteins le niveau 5", group:"Progression"},
- {id:"level6", emoji:"👑", label:"Niveau max", desc:"Atteins le niveau 6, le sommet", group:"Progression"},
+ {id:"first_steps", emoji:"🥾", label:"Premiers pas", desc:"Termine ta toute première activité", group:"Niveaux d'expédition"},
+ {id:"level2", emoji:"🪢", label:"Niveau 2", desc:"Atteins le niveau 2", group:"Niveaux d'expédition"},
+ {id:"level3", emoji:"🪜", label:"Niveau 3", desc:"Atteins le niveau 3", group:"Niveaux d'expédition"},
+ {id:"level4", emoji:"⛏️", label:"Niveau 4", desc:"Atteins le niveau 4", group:"Niveaux d'expédition"},
+ {id:"level5", emoji:"🏔️", label:"Niveau 5", desc:"Atteins le niveau 5", group:"Niveaux d'expédition"},
+ {id:"level6", emoji:"🗿", label:"Niveau max", desc:"Atteins le niveau 6, le sommet", group:"Niveaux d'expédition"},
  // Maîtrise par thème
- {id:"classroom_done", emoji:"🏫", label:"Classroom Hero", desc:"Toutes les fiches Classroom English vues", group:"Maîtrise"},
- {id:"grammar_done", emoji:"🧩", label:"Grammar Detective", desc:"Toutes les fiches Mots qui bloquent vues", group:"Maîtrise"},
- {id:"survival_done", emoji:"💬", label:"Confident Speaker", desc:"Toutes les Survival Phrases vues", group:"Maîtrise"},
- {id:"classroom_quiz_perfect", emoji:"🎯", label:"Quiz Classroom parfait", desc:"Quiz sans faute sur Classroom English", group:"Maîtrise"},
- {id:"grammar_quiz_perfect", emoji:"🎯", label:"Quiz Grammar parfait", desc:"Quiz sans faute sur Mots qui bloquent", group:"Maîtrise"},
- {id:"survival_quiz_perfect", emoji:"🎯", label:"Quiz Survival parfait", desc:"Quiz sans faute sur Survival Phrases", group:"Maîtrise"},
- {id:"classroom_memory_perfect", emoji:"🧠", label:"Memory Classroom parfait", desc:"Memory sans erreur sur Classroom English", group:"Maîtrise"},
- {id:"grammar_memory_perfect", emoji:"🧠", label:"Memory Grammar parfait", desc:"Memory sans erreur sur Mots qui bloquent", group:"Maîtrise"},
- {id:"survival_memory_perfect", emoji:"🧠", label:"Memory Survival parfait", desc:"Memory sans erreur sur Survival Phrases", group:"Maîtrise"},
+ {id:"classroom_done", emoji:"🧭", label:"Classroom Hero", desc:"Toutes les fiches Classroom English vues", group:"Artefacts"},
+ {id:"grammar_done", emoji:"📜", label:"Grammar Detective", desc:"Toutes les fiches Mots qui bloquent vues", group:"Artefacts"},
+ {id:"survival_done", emoji:"🔥", label:"Confident Speaker", desc:"Toutes les Survival Phrases vues", group:"Artefacts"},
+ {id:"classroom_quiz_perfect", emoji:"🎯", label:"Quiz Classroom parfait", desc:"Quiz sans faute sur Classroom English", group:"Artefacts"},
+ {id:"grammar_quiz_perfect", emoji:"💎", label:"Quiz Grammar parfait", desc:"Quiz sans faute sur Mots qui bloquent", group:"Artefacts"},
+ {id:"survival_quiz_perfect", emoji:"🏹", label:"Quiz Survival parfait", desc:"Quiz sans faute sur Survival Phrases", group:"Artefacts"},
+ {id:"classroom_memory_perfect", emoji:"🐾", label:"Memory Classroom parfait", desc:"Memory sans erreur sur Classroom English", group:"Artefacts"},
+ {id:"grammar_memory_perfect", emoji:"🗝️", label:"Memory Grammar parfait", desc:"Memory sans erreur sur Mots qui bloquent", group:"Artefacts"},
+ {id:"survival_memory_perfect", emoji:"🦴", label:"Memory Survival parfait", desc:"Memory sans erreur sur Survival Phrases", group:"Artefacts"},
  // Régularité
- {id:"streak3", emoji:"🔥", label:"3 jours d'affilée", desc:"Reviens 3 jours de suite", group:"Régularité"},
- {id:"streak5", emoji:"🔥", label:"5 jours d'affilée", desc:"Reviens 5 jours de suite", group:"Régularité"},
- {id:"streak7", emoji:"⭐", label:"Une semaine !", desc:"Reviens 7 jours de suite", group:"Régularité"},
- {id:"streak14", emoji:"🌟", label:"Deux semaines !", desc:"Reviens 14 jours de suite", group:"Régularité"},
- {id:"streak30", emoji:"🏆", label:"Un mois complet", desc:"Reviens 30 jours de suite", group:"Régularité"},
+ {id:"streak3", emoji:"🔥", label:"3 jours d'affilée", desc:"Reviens 3 jours de suite", group:"Carnet de bord"},
+ {id:"streak5", emoji:"🔥", label:"5 jours d'affilée", desc:"Reviens 5 jours de suite", group:"Carnet de bord"},
+ {id:"streak7", emoji:"⭐", label:"Une semaine !", desc:"Reviens 7 jours de suite", group:"Carnet de bord"},
+ {id:"streak14", emoji:"🌟", label:"Deux semaines !", desc:"Reviens 14 jours de suite", group:"Carnet de bord"},
+ {id:"streak30", emoji:"🏆", label:"Un mois complet", desc:"Reviens 30 jours de suite", group:"Carnet de bord"},
  // Quiz & Memory
- {id:"quiz_streak5", emoji:"⚡", label:"Quiz Streak x5", desc:"5 bonnes réponses d'affilée en quiz", group:"Quiz & Memory"},
- {id:"quiz_streak10", emoji:"⚡", label:"Quiz Streak x10", desc:"10 bonnes réponses d'affilée en quiz", group:"Quiz & Memory"},
- {id:"quiz_flawless5", emoji:"💎", label:"5 quiz sans faute", desc:"Termine 5 quiz à 100%", group:"Quiz & Memory"},
- {id:"memory_win", emoji:"🃏", label:"Memory Master", desc:"Un Memory terminé sans erreur", group:"Quiz & Memory"},
- {id:"memory_win5", emoji:"🃏", label:"Memory Expert", desc:"5 Memory terminés sans erreur", group:"Quiz & Memory"},
- {id:"memory_marathon", emoji:"🎲", label:"Memory Marathon", desc:"Joue à 10 parties de Memory", group:"Quiz & Memory"},
+ {id:"quiz_streak5", emoji:"⚡", label:"Quiz Streak x5", desc:"5 bonnes réponses d'affilée en quiz", group:"Épreuves"},
+ {id:"quiz_streak10", emoji:"⚡", label:"Quiz Streak x10", desc:"10 bonnes réponses d'affilée en quiz", group:"Épreuves"},
+ {id:"quiz_flawless5", emoji:"💎", label:"5 quiz sans faute", desc:"Termine 5 quiz à 100%", group:"Épreuves"},
+ {id:"memory_win", emoji:"🐍", label:"Memory Master", desc:"Un Memory terminé sans erreur", group:"Épreuves"},
+ {id:"memory_win5", emoji:"🦂", label:"Memory Expert", desc:"5 Memory terminés sans erreur", group:"Épreuves"},
+ {id:"memory_marathon", emoji:"🗺️", label:"Memory Marathon", desc:"Joue à 10 parties de Memory", group:"Épreuves"},
  // Missions
- {id:"mission5", emoji:"🚀", label:"Missions x5", desc:"5 missions du jour réalisées", group:"Missions"},
- {id:"mission10", emoji:"🚀", label:"Missions x10", desc:"10 missions du jour réalisées", group:"Missions"},
- {id:"mission25", emoji:"🛸", label:"Missions x25", desc:"25 missions du jour réalisées", group:"Missions"},
+ {id:"mission5", emoji:"⛺", label:"Missions x5", desc:"5 missions du jour réalisées", group:"Expéditions"},
+ {id:"mission10", emoji:"🏕️", label:"Missions x10", desc:"10 missions du jour réalisées", group:"Expéditions"},
+ {id:"mission25", emoji:"🌋", label:"Missions x25", desc:"25 missions du jour réalisées", group:"Expéditions"},
  // Exploration
- {id:"explorer_browse", emoji:"📖", label:"Lecteur assidu", desc:"Consulte les fiches des 3 thèmes", group:"Exploration"},
- {id:"explorer_flash", emoji:"🗂️", label:"As des flashcards", desc:"Utilise les flashcards sur les 3 thèmes", group:"Exploration"},
- {id:"explorer_quiz", emoji:"📝", label:"Quizeur complet", desc:"Fais un quiz sur les 3 thèmes", group:"Exploration"},
- {id:"explorer_memory", emoji:"🔍", label:"Mémoire complète", desc:"Joue au Memory sur les 3 thèmes", group:"Exploration"},
- {id:"explorer_mindmap", emoji:"🗺️", label:"Cartographe", desc:"Ouvre la carte mentale des 3 thèmes", group:"Exploration"},
+ {id:"explorer_browse", emoji:"📜", label:"Lecteur assidu", desc:"Consulte les fiches des 3 thèmes", group:"Cartographie"},
+ {id:"explorer_flash", emoji:"🪨", label:"As des flashcards", desc:"Utilise les flashcards sur les 3 thèmes", group:"Cartographie"},
+ {id:"explorer_quiz", emoji:"🏹", label:"Quizeur complet", desc:"Fais un quiz sur les 3 thèmes", group:"Cartographie"},
+ {id:"explorer_memory", emoji:"🐾", label:"Mémoire complète", desc:"Joue au Memory sur les 3 thèmes", group:"Cartographie"},
+ {id:"explorer_mindmap", emoji:"🗺️", label:"Cartographe", desc:"Ouvre la carte mentale des 3 thèmes", group:"Cartographie"},
  // Légende
- {id:"legend", emoji:"🏅", label:"Légende de l'ABC", desc:"Débloque tous les autres badges", group:"Légende"},
+ {id:"legend", emoji:"🗿", label:"Légende de l'ABC", desc:"Débloque tous les autres badges", group:"Légende vivante"},
 ];
 
 /* ---------------------------- STORAGE ---------------------------- */
@@ -1020,11 +1074,12 @@ function HomeScreen({progress, onPlayMission, goCategory}){
   }, []);
   return (
     <div>
-      <div className="card mission-card">
-        <p className="eyebrow" style={{color:"var(--l-blue-deep)"}}>Mission du jour</p>
-        <h3 className="display">5 mots à réviser</h3>
-        <p>Tirés au hasard de toutes tes fiches. Termine-la pour un bonus XP et garder ta série !</p>
-        <button className="btn btn-primary btn-block" onClick={onPlayMission}>Commencer la mission</button>
+      <div className="card mission-card torn-edge">
+        <span className="wax-seal"><IconWaxSeal size={44} /></span>
+        <p className="eyebrow stamp" style={{color:"var(--l-yellow-deep)"}}>Expédition du jour</p>
+        <h3 className="display">5 mots à déchiffrer</h3>
+        <p>Tirés au hasard dans la jungle de tes fiches. Termine l'expédition pour un bonus XP et garder ton feu de camp allumé !</p>
+        <button className="btn btn-primary btn-block" onClick={onPlayMission}>Partir en expédition</button>
       </div>
 
       <div className="card">
@@ -1039,7 +1094,7 @@ function HomeScreen({progress, onPlayMission, goCategory}){
       <p className="section-sub">Fiches, flashcards, quiz et memory pour chaque thème.</p>
       <div className="cat-grid">
         {CATEGORIES.map(cat=>(
-          <button key={cat.id} className={"cat-card "+cat.cls} onClick={()=>goCategory(cat.id)}>
+          <button key={cat.id} className={"cat-card torn-edge "+cat.cls} onClick={()=>goCategory(cat.id)}>
             <div className="cat-ic"><cat.Icon size={20} /></div>
             <div>
               <h3>{cat.title}</h3>
@@ -1052,7 +1107,7 @@ function HomeScreen({progress, onPlayMission, goCategory}){
 
       <div className="badges-section">
         <div className="badges-head">
-          <h2 className="section-title" style={{margin:0}}>Tes badges</h2>
+          <h2 className="section-title display" style={{margin:0}}>Tes badges</h2>
           <span className="badges-count">{progress.badges.length} / {BADGES.length}</span>
         </div>
         <p className="section-sub">Touche un badge pour voir comment le débloquer.</p>
@@ -1092,7 +1147,7 @@ function CategoryScreen({cat, onBack, goMode, groupId, setGroupId}){
         <button className="backbtn" onClick={onBack}><IconChevronLeft /></button>
         <div className="cat-ic" style={{"--accent":"var(--l-"+cat.accent+")"}}><cat.Icon size={18} /></div>
         <div>
-          <h2 className="section-title" style={{margin:0}}>{cat.title}</h2>
+          <h2 className="section-title display" style={{margin:0}}>{cat.title}</h2>
         </div>
       </div>
       <p className="section-sub">{cat.subtitle}</p>
@@ -1146,7 +1201,7 @@ function BrowseScreen({items, onBack, onSeen}){
     <div>
       <div className="backbar">
         <button className="backbtn" onClick={onBack}><IconChevronLeft /></button>
-        <h2 className="section-title" style={{margin:0}}>Fiches & tips</h2>
+        <h2 className="section-title display" style={{margin:0}}>Fiches & tips</h2>
       </div>
       <div className="ref-list">
         {items.map((it,i)=>(
@@ -1181,10 +1236,10 @@ function FlashScreen({items, onBack, onFinish}){
     <div className="flash-wrap">
       <div className="backbar" style={{alignSelf:"flex-start"}}>
         <button className="backbtn" onClick={onBack}><IconChevronLeft /></button>
-        <h2 className="section-title" style={{margin:0}}>Flashcards</h2>
+        <h2 className="section-title display" style={{margin:0}}>Flashcards</h2>
       </div>
       <div className="flash-progress">Carte {i+1} / {order.length}</div>
-      <div className="flashcard" onClick={()=>setFlipped(f=>!f)} role="button" tabIndex={0}
+      <div className="flashcard torn-edge" onClick={()=>setFlipped(f=>!f)} role="button" tabIndex={0}
            onKeyDown={(e)=>{ if(e.key==="Enter"||e.key===" ") setFlipped(f=>!f); }}>
         <span className="face-label">{flipped ? "Français" : "English"} · touche pour retourner</span>
         {!flipped ? (
@@ -1259,7 +1314,7 @@ function QuizScreen({items, onBack, onFinish}){
     <div>
       <div className="backbar">
         <button className="backbtn" onClick={onBack}><IconChevronLeft /></button>
-        <h2 className="section-title" style={{margin:0}}>Quiz éclair</h2>
+        <h2 className="section-title display" style={{margin:0}}>Quiz éclair</h2>
       </div>
       <div className="quiz-score">Question {i+1} / {order.length} · ✅ {correctCount} bonnes réponses</div>
       <div className="quiz-q">{item.emoji} {item.en}</div>
@@ -1337,7 +1392,7 @@ function MemoryScreen({items, onBack, onFinish}){
     <div>
       <div className="backbar">
         <button className="backbtn" onClick={onBack}><IconChevronLeft /></button>
-        <h2 className="section-title" style={{margin:0}}>Memory</h2>
+        <h2 className="section-title display" style={{margin:0}}>Memory</h2>
       </div>
       <div className="mem-meta">
         <span>Coups : {moves}</span>
@@ -1404,7 +1459,7 @@ function MindmapScreen({cat, onBack}){
     <div>
       <div className="backbar">
         <button className="backbtn" onClick={onBack}><IconChevronLeft /></button>
-        <h2 className="section-title" style={{margin:0}}>Carte mentale</h2>
+        <h2 className="section-title display" style={{margin:0}}>Carte mentale</h2>
       </div>
       <p className="section-sub">Touche une branche pour la mettre en avant.</p>
 
@@ -1634,7 +1689,7 @@ function App(){
     }
     setResult({
       emoji:"🃏", title:"Fiches terminées !",
-      subtitle: missionActive ? "Mission du jour réussie, +20 XP et série maintenue." : `+${seenIds.length*2} XP gagnés.`,
+      subtitle: missionActive ? "Expédition réussie, +20 XP et feu de camp maintenu." : `+${seenIds.length*2} XP gagnés.`,
     });
     setScreen("result");
   }
