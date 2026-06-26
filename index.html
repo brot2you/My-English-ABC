@@ -175,7 +175,9 @@
   .cat-card .chev{margin-left:auto;opacity:0.5;color:var(--ink-soft);}
   .cat-classroom{--accent:var(--l-green);--accent-deep:var(--l-green-deep);}
   .cat-grammar{--accent:var(--l-yellow);--accent-deep:var(--l-yellow-deep);}
+  .cat-grammaire{--accent:var(--l-lightblue);--accent-deep:var(--l-lightblue-deep);}
   .cat-survival{--accent:var(--l-red);--accent-deep:var(--l-red-deep);}
+  .cat-feelings{--accent:var(--l-pink);--accent-deep:var(--l-pink-deep);}
 
   .backbar{display:flex;align-items:center;gap:10px;margin-bottom:14px;}
   .backbtn{background:var(--surface);border:1px solid var(--line);border-radius:10px;width:36px;height:36px;
@@ -363,7 +365,7 @@
     z-index:6;
   }
   .bottomnav-inner{max-width:560px;width:100%;display:flex;justify-content:space-around;padding:0 18px;}
-  .navbtn{background:none;border:none;color:var(--ink-soft);display:flex;flex-direction:column;align-items:center;gap:4px;font-size:10.5px;padding:4px 10px;border-radius:10px;}
+  .navbtn{background:none;border:none;color:var(--ink-soft);display:flex;flex-direction:column;align-items:center;gap:3px;font-size:8.5px;padding:3px 3px;border-radius:8px;}
   .navbtn.active{color:var(--ink);font-weight:700;background:var(--surface-2);}
 
   @media (prefers-reduced-motion:reduce){
@@ -712,10 +714,25 @@ function IconGrammar({size=20}){
     <rect x="10.4" y="12" width="3.2" height="3.6" rx="0.6"/>
   </svg>;
 }
+function IconGrammaire({size=20}){
+  return <svg width={size} height={size} viewBox="0 0 24 24" {...ic}>
+    <path d="M4 5.5h16v14a1 1 0 0 1-1 1H5a1 1 0 0 1-1-1V5.5Z"/>
+    <path d="M4 5.5c0-1.1.9-2 2-2h12a2 2 0 0 1 2 2"/>
+    <path d="M4 5.5h16"/>
+    <path d="M7.5 10h9M7.5 13h9M7.5 16h5"/>
+    <path d="M17 15l1.5-1.5 1 1L18 16l-2.5.5z" strokeWidth="1.2" fill="currentColor"/>
+  </svg>;
+}
 function IconSurvival({size=20}){
   return <svg width={size} height={size} viewBox="0 0 24 24" {...ic}>
     <path d="M11 12.8v7.7M9.2 20.5h3.6"/>
     <path d="M11 12.8c-2.7-1.3-3.8-3.7-3.1-6.2.5 1 1.2 1.6 1.9 1.7C9.3 6.4 9.8 4.6 11.3 3c.3 1.7 1.1 2.5 2 3.3 1 .9 1.9 2.1 1.6 3.8-.3 1.7-1.8 2.6-3.9 2.7Z"/>
+  </svg>;
+}
+function IconFeelings({size=20}){
+  return <svg width={size} height={size} viewBox="0 0 24 24" {...ic}>
+    <path d="M12 20S4 14.5 4 8.5a4.5 4.5 0 0 1 8-2.8A4.5 4.5 0 0 1 20 8.5C20 14.5 12 20 12 20Z"/>
+    <path d="M17 4l.7 1.3L19 6l-1.3.7L17 8l-.7-1.3L15 6l1.3-.7Z" fill="currentColor" stroke="none" strokeWidth="0"/>
   </svg>;
 }
 function IconBrowse({size=20}){
@@ -785,42 +802,224 @@ function IconRoundel({size=38}){
 
 /* ---------------------------- CONTENT DATA ---------------------------- */
 
-const CLASSROOM_ITEMS = [
- {en:"Open your book(s)",fr:"Ouvre / Ouvrez ton ou vos livre(s)",tip:"« Open » = ouvrir. Pense à « open the door ».",emoji:"📖"},
- {en:"Close your book(s)",fr:"Ferme / Fermez ton ou vos livre(s)",tip:"Le contraire d'« open ».",emoji:"📕"},
- {en:"Listen (and repeat)",fr:"Écoute (et répète)",tip:"On l'entend très souvent en cours d'audio.",emoji:"👂"},
- {en:"Look at the board",fr:"Regarde le tableau",tip:"« Board » = le tableau de la classe.",emoji:"🖍️"},
- {en:"Stand up",fr:"Lève-toi",tip:"Le contraire de « sit down ».",emoji:"🧍"},
- {en:"Sit down",fr:"Assieds-toi",tip:"On l'utilise pour faire asseoir la classe.",emoji:"🪑"},
- {en:"Put up your hand",fr:"Lève la main",tip:"= « raise your hand ».",emoji:"✋"},
- {en:"Work in pairs",fr:"Travaille en binôme",tip:"« Pair » = une paire, donc deux personnes.",emoji:"👥"},
- {en:"Work in groups",fr:"Travaille en groupe",tip:"« Group » se prononce presque comme en français.",emoji:"👨‍👩‍👧"},
- {en:"Underline",fr:"Souligne",tip:"« Line » = une ligne, donc souligner.",emoji:"➖"},
- {en:"Circle",fr:"Entoure",tip:"« Circle » = un cercle.",emoji:"⭕"},
- {en:"Cross out",fr:"Barre",tip:"« Cross » = croix, comme barrer d'une croix.",emoji:"❌"},
- {en:"Fill in the gaps",fr:"Complète les blancs",tip:"« Gap » = un trou, un blanc à compléter.",emoji:"✏️"},
- {en:"Match A with B",fr:"Relie / Associe A et B",tip:"On relie deux éléments qui vont ensemble.",emoji:"🔗"},
- {en:"Tick the box",fr:"Coche la case",tip:"« Tick » = la coche ✓.",emoji:"☑️"},
- {en:"Number the sentences",fr:"Numérote les phrases",tip:"Mets un numéro dans l'ordre.",emoji:"🔢"},
- {en:"Put the words in order",fr:"Remets les mots dans l'ordre",tip:"Très utile pour les exercices de réécriture.",emoji:"🔀"},
- {en:"Translate",fr:"Traduis",tip:"Passer d'une langue à l'autre.",emoji:"🌍"},
- {en:"Correct the mistakes",fr:"Corrige les erreurs",tip:"« Mistake » = une erreur.",emoji:"✅"},
- {en:"Write a sentence",fr:"Écris une phrase",tip:"« Sentence » = une phrase (pas une « sentence » de prison !).",emoji:"📝"},
- {en:"Answer the question(s)",fr:"Réponds à la/aux question(s)",tip:"« Answer » = répondre ou la réponse.",emoji:"💬"},
- {en:"Repeat after me",fr:"Répète après moi",tip:"Souvent dit par le professeur à l'oral.",emoji:"🔁"},
- {en:"Spell it",fr:"Épelle-le",tip:"Dire un mot lettre par lettre.",emoji:"🔤"},
- {en:"Hand in your work",fr:"Rends ton travail",tip:"« Hand in » = rendre un devoir.",emoji:"📤"},
- {en:"Take out your copybook",fr:"Sors ton cahier",tip:"« Take out » = sortir quelque chose.",emoji:"📓"},
- {en:"Take out your pencil case",fr:"Sors ta trousse",tip:"« Pencil case » = trousse.",emoji:"🖊️"},
- {en:"Homework",fr:"Les devoirs",tip:"« Home » + « work » = travail à la maison.",emoji:"🏠"},
- {en:"Due for next time",fr:"À rendre pour la prochaine fois",tip:"« Due » = à rendre, attendu.",emoji:"📅"},
- {en:"Be quiet / Quietly",fr:"Sois silencieux / silencieusement",tip:"Pour demander le calme.",emoji:"🤫"},
- {en:"Pay attention",fr:"Sois attentif",tip:"« Pay attention » = faire attention.",emoji:"👀"},
- {en:"Get into pairs",fr:"Mets-toi par deux",tip:"Équivalent de « work in pairs ».",emoji:"🤝"},
- {en:"Turn to page...",fr:"Va à la page...",tip:"« Turn to » = se tourner vers, aller à.",emoji:"📃"},
+const CLASSROOM_GROUPS = [
+ {id:"action-words", label:"Mots d'action", items:[
+   {en:"Circle",fr:"Entoure",tip:"Trace un cercle autour de l'élément. Ex : Circle the correct word.",emoji:"⭕"},
+   {en:"Highlight",fr:"Surligne",tip:"Colorie en transparence pour faire ressortir. Ex : Highlight the verbs.",emoji:"🖍️"},
+   {en:"Underline",fr:"Souligne",tip:"Trace un trait sous l'élément. Ex : Underline the adjectives.",emoji:"📏"},
+   {en:"Tick (✓) the box",fr:"Coche la case",tip:"Mets une coche ✓ dans la case correcte. Ex : Tick the right answer.",emoji:"☑️"},
+   {en:"Cross out",fr:"Barre",tip:"Raye d'un trait ce qui est faux. Ex : Cross out the wrong word.",emoji:"❌"},
+   {en:"Match A with B",fr:"Relie / Associe A et B",tip:"Trace un trait entre deux éléments qui vont ensemble. Ex : Match the words with the pictures.",emoji:"🔗"},
+   {en:"Fill in the gaps / blanks",fr:"Complète les blancs",tip:"Écris le mot manquant dans l'espace vide. Ex : Fill in the gaps with the correct verb.",emoji:"✏️"},
+   {en:"Put the words in order",fr:"Remets les mots dans l'ordre",tip:"Réorganise les mots pour former une phrase correcte.",emoji:"🔀"},
+   {en:"Number the sentences",fr:"Numérote les phrases",tip:"Mets 1, 2, 3... dans l'ordre chronologique ou logique.",emoji:"🔢"},
+   {en:"Correct the mistakes",fr:"Corrige les erreurs",tip:"Trouve et corrige ce qui est faux. Ex : There are 5 mistakes. Find them.",emoji:"✅"},
+   {en:"Translate",fr:"Traduis",tip:"Passe d'une langue à l'autre. Ex : Translate into English.",emoji:"🌍"},
+   {en:"Answer the question(s)",fr:"Réponds à la/aux question(s)",tip:"« Answer » = répondre. Réponds toujours en phrase complète si possible.",emoji:"💬"},
+   {en:"Write a sentence",fr:"Écris une phrase",tip:"Une phrase = sujet + verbe (+ complément). Majuscule au début, point à la fin.",emoji:"📝"},
+   {en:"Describe",fr:"Décris",tip:"Donne des détails sur quelque chose ou quelqu'un. Ex : Describe the picture.",emoji:"🖼️"},
+   {en:"Find / Look for",fr:"Trouve / Cherche",tip:"Repère un élément dans un texte ou une image.",emoji:"🔍"},
+ ]},
+ {id:"classroom-life", label:"Vie de classe", items:[
+   {en:"Open your book(s)",fr:"Ouvre / Ouvrez ton ou vos livre(s)",tip:"« Open » = ouvrir. Pense à « open the door ».",emoji:"📖"},
+   {en:"Close your book(s)",fr:"Ferme / Fermez ton ou vos livre(s)",tip:"Le contraire d'« open ».",emoji:"📕"},
+   {en:"Look at the board",fr:"Regarde le tableau",tip:"« Board » = le tableau de la classe.",emoji:"🖊️"},
+   {en:"Stand up",fr:"Lève-toi",tip:"Le contraire de « sit down ».",emoji:"🧍"},
+   {en:"Sit down",fr:"Assieds-toi",tip:"On l'utilise pour faire asseoir la classe.",emoji:"🪑"},
+   {en:"Put up your hand",fr:"Lève la main",tip:"= « raise your hand ».",emoji:"✋"},
+   {en:"Work in pairs",fr:"Travaille en binôme",tip:"« Pair » = une paire, donc deux personnes.",emoji:"👥"},
+   {en:"Work in groups",fr:"Travaille en groupe",tip:"« Group » se prononce presque comme en français.",emoji:"👨‍👩‍👧"},
+   {en:"Get into pairs",fr:"Mets-toi par deux",tip:"Équivalent de « work in pairs ».",emoji:"🤝"},
+   {en:"Turn to page...",fr:"Va à la page...",tip:"« Turn to » = se tourner vers, aller à.",emoji:"📃"},
+   {en:"Be quiet / Quietly",fr:"Sois silencieux / silencieusement",tip:"Pour demander le calme.",emoji:"🤫"},
+   {en:"Pay attention",fr:"Sois attentif",tip:"« Pay attention » = faire attention.",emoji:"👀"},
+ ]},
+ {id:"oral", label:"À l'oral", items:[
+   {en:"Listen (and repeat)",fr:"Écoute (et répète)",tip:"On l'entend très souvent en cours d'audio.",emoji:"👂"},
+   {en:"Repeat after me",fr:"Répète après moi",tip:"Souvent dit par le professeur à l'oral.",emoji:"🔁"},
+   {en:"Spell it",fr:"Épelle-le",tip:"Dire un mot lettre par lettre : A-P-P-L-E.",emoji:"🔤"},
+   {en:"Read aloud",fr:"Lis à voix haute",tip:"« Aloud » = à voix haute, pour que tout le monde entende.",emoji:"📢"},
+   {en:"Say it in English",fr:"Dis-le en anglais",tip:"Traduis ta réponse dans la langue cible.",emoji:"🗣️"},
+ ]},
+ {id:"homework", label:"Devoirs & matériel", items:[
+   {en:"Take out your copybook",fr:"Sors ton cahier",tip:"« Take out » = sortir quelque chose.",emoji:"📓"},
+   {en:"Take out your pencil case",fr:"Sors ta trousse",tip:"« Pencil case » = trousse.",emoji:"🖊️"},
+   {en:"Hand in your work",fr:"Rends ton travail",tip:"« Hand in » = rendre un devoir.",emoji:"📤"},
+   {en:"Homework",fr:"Les devoirs",tip:"« Home » + « work » = travail à la maison.",emoji:"🏠"},
+   {en:"Due for next time",fr:"À rendre pour la prochaine fois",tip:"« Due » = à rendre, attendu.",emoji:"📅"},
+   {en:"Learn by heart",fr:"Apprends par cœur",tip:"Mémorise. Ex : Learn the vocabulary by heart.",emoji:"🧠"},
+   {en:"Revise",fr:"Révise",tip:"« Revise » = revoir ses notes, réviser pour un contrôle.",emoji:"📚"},
+ ]},
 ];
 
+const SURVIVAL_GROUPS = [
+ {id:"survival-phrases", label:"Phrases de survie", items:[
+   {en:"Can you repeat, please?",fr:"Pouvez-vous répéter, s'il vous plaît ?",tip:"La phrase la plus utile en classe !",emoji:"🔁"},
+   {en:"Can you speak more slowly, please?",fr:"Pouvez-vous parler plus lentement ?",tip:"Pour demander de ralentir.",emoji:"🐢"},
+   {en:"How do you say... in English?",fr:"Comment dit-on... en anglais ?",tip:"Pour demander un mot qui manque.",emoji:"🗣️"},
+   {en:"What does... mean?",fr:"Que signifie... ?",tip:"Pour demander le sens d'un mot.",emoji:"🧐"},
+   {en:"I don't understand",fr:"Je ne comprends pas",tip:"Pas grave de le dire, ça aide le prof à reformuler.",emoji:"😅"},
+   {en:"I don't know",fr:"Je ne sais pas",tip:"Mieux que de rester silencieux.",emoji:"🤷"},
+   {en:"Can I go to the toilet, please?",fr:"Puis-je aller aux toilettes ?",tip:"Phrase pratique et polie.",emoji:"🚻"},
+   {en:"Excuse me",fr:"Excusez-moi",tip:"Pour interpeller poliment.",emoji:"🙋"},
+   {en:"Sorry, I'm late",fr:"Désolé, je suis en retard",tip:"Pour s'excuser en entrant en classe.",emoji:"⏰"},
+   {en:"Can you help me, please?",fr:"Pouvez-vous m'aider ?",tip:"Demander de l'aide sans crainte.",emoji:"🆘"},
+   {en:"I think that...",fr:"Je pense que...",tip:"Pour donner un avis à l'oral.",emoji:"💭"},
+   {en:"In my opinion...",fr:"À mon avis...",tip:"Une autre façon de donner son avis.",emoji:"🗯️"},
+ ]},
+ {id:"feelings", label:"Boîte à sentiments 🧰", items:[
+   {en:"I feel confident",fr:"Je me sens confiant(e)",tip:"Quand tu te sens à l'aise. Say it before speaking !",emoji:"😎"},
+   {en:"I'm confused",fr:"Je suis confus(e) / Je ne comprends pas bien",tip:"Quand quelque chose n'est pas clair dans ta tête.",emoji:"😵‍💫"},
+   {en:"I'm lost",fr:"Je suis perdu(e)",tip:"Quand tu ne sais plus où tu en es dans la leçon.",emoji:"🌀"},
+   {en:"I'm stressed",fr:"Je suis stressé(e)",tip:"Avant un exposé ou un contrôle.",emoji:"😰"},
+   {en:"I think I understand",fr:"Je crois que j'ai compris",tip:"Pour signaler au prof que tu suis.",emoji:"🤔"},
+   {en:"I made a mistake",fr:"J'ai fait une erreur",tip:"Normal ! Everyone makes mistakes.",emoji:"😬"},
+   {en:"I need more time",fr:"J'ai besoin de plus de temps",tip:"Pour demander poliment qu'on attende.",emoji:"⏳"},
+   {en:"I'm not sure",fr:"Je ne suis pas sûr(e)",tip:"Quand tu hésites entre deux réponses.",emoji:"🤷"},
+   {en:"I'm ready",fr:"Je suis prêt(e)",tip:"Pour indiquer que tu peux commencer.",emoji:"👍"},
+   {en:"I find it difficult",fr:"Je trouve ça difficile",tip:"Honnêteté appréciée — ça aide le prof à t'aider.",emoji:"😓"},
+   {en:"I find it easy",fr:"Je trouve ça facile",tip:"Super ! Tu peux aider un(e) camarade.",emoji:"😄"},
+   {en:"I'm proud of myself",fr:"Je suis fier / fière de moi",tip:"Dis-le quand tu as bien travaillé !",emoji:"🌟"},
+   {en:"I'm doing my best",fr:"Je fais de mon mieux",tip:"That's all anyone can ask !",emoji:"💪"},
+   {en:"I'd like to try",fr:"J'aimerais essayer",tip:"Pour volunteering en classe.",emoji:"🙋"},
+ ]},
+];
+
+// Keep flat versions for badge counting (used by checkBadges)
+const CLASSROOM_ITEMS = CLASSROOM_GROUPS.flatMap(g => g.items);
+const SURVIVAL_ITEMS = SURVIVAL_GROUPS.flatMap(g => g.items);
+
+function buildClusters(cat){
+  return cat.groups.map(g => ({label:g.label, items:g.items}));
+}
+
+
 const GRAMMAR_GROUPS = [
+ {id:"question",label:"Mots interrogatifs",items:[
+   {en:"who",fr:"qui",tip:"Pour parler d'une personne.",emoji:"❓"},
+   {en:"what",fr:"quoi / quel",tip:"Pour une chose ou une idée.",emoji:"❓"},
+   {en:"where",fr:"où",tip:"Pour un lieu.",emoji:"📍"},
+   {en:"when",fr:"quand",tip:"Pour un moment, une date.",emoji:"⏰"},
+   {en:"why",fr:"pourquoi",tip:"On répond avec « because ».",emoji:"🤔"},
+   {en:"how",fr:"comment",tip:"Pour la manière.",emoji:"⚙️"},
+   {en:"which",fr:"lequel / quel (parmi plusieurs)",tip:"Quand il y a un choix limité.",emoji:"👉"},
+   {en:"how many / how much",fr:"combien (dénombrable / indénombrable)",tip:"« many » pour ce qu'on compte, « much » pour ce qu'on ne compte pas.",emoji:"🔢"},
+ ]},
+ {id:"verbs",label:"Verbes courants",items:[
+   {en:"be / am / is / are",fr:"être — I am, he/she/it is, you/we/they are",tip:"Verbe le plus fréquent. ➜ was/were au passé.",emoji:"🟢"},
+   {en:"have / has",fr:"avoir — I have, he/she/it has",tip:"« has » seulement avec he/she/it. ➜ had au passé.",emoji:"🎒"},
+   {en:"do / does / did",fr:"faire (auxiliaire de question/négation)",tip:"« Does » avec he/she/it. « Did » = passé. ➜ Don't, doesn't, didn't.",emoji:"❔"},
+   {en:"go / goes",fr:"aller",tip:"I go, she goes. ➜ Irrégulier : went / gone.",emoji:"🚶"},
+   {en:"come / comes",fr:"venir",tip:"Come here! ➜ Irrégulier : came / come.",emoji:"👋"},
+   {en:"get / gets",fr:"obtenir / recevoir / devenir / arriver",tip:"Très polyvalent : get a present, get tired, get home. ➜ got / got.",emoji:"📦"},
+   {en:"make / makes",fr:"faire / fabriquer",tip:"Make ≠ do : make a cake, make a mistake, make friends. ➜ made / made.",emoji:"🛠️"},
+   {en:"take / takes",fr:"prendre",tip:"Take a photo, take the bus, take notes. ➜ took / taken.",emoji:"✋"},
+   {en:"give / gives",fr:"donner",tip:"Give me a hand! ➜ gave / given.",emoji:"🤲"},
+   {en:"put / puts",fr:"mettre / poser",tip:"Put it on the table. ➜ put / put (invariable).",emoji:"📌"},
+   {en:"see / sees",fr:"voir",tip:"I see / I saw. ➜ saw / seen.",emoji:"👁️"},
+   {en:"know / knows",fr:"savoir / connaître",tip:"I know = je sais. I know him = je le connais. ➜ knew / known.",emoji:"🧠"},
+   {en:"think / thinks",fr:"penser / croire",tip:"I think so = je crois. I think that... ➜ thought / thought.",emoji:"💭"},
+   {en:"want / wants",fr:"vouloir",tip:"I want to go. She wants a coffee. ➜ wanted / wanted.",emoji:"🌟"},
+   {en:"like / likes",fr:"aimer (bien)",tip:"I like pizza. ≠ love (plus fort). ➜ liked / liked.",emoji:"❤️"},
+   {en:"need / needs",fr:"avoir besoin de",tip:"I need help. She needs more time. ➜ needed / needed.",emoji:"🆘"},
+   {en:"try / tries",fr:"essayer",tip:"Try your best! I tried but... ➜ tried / tried.",emoji:"🎯"},
+   {en:"say / says",fr:"dire (quelque chose)",tip:"She says... ≠ tell (qui dit à quelqu'un). ➜ said / said.",emoji:"💬"},
+   {en:"tell / tells",fr:"dire (à quelqu'un) / raconter",tip:"Tell me! He told her. ≠ say. ➜ told / told.",emoji:"🗣️"},
+   {en:"ask / asks",fr:"demander / poser une question",tip:"Ask a question. Ask for help. ➜ asked / asked.",emoji:"❓"},
+   {en:"look / looks",fr:"regarder / avoir l'air",tip:"Look at me. She looks tired. ➜ looked / looked.",emoji:"👀"},
+   {en:"find / finds",fr:"trouver",tip:"Find the answer. I found it. ➜ found / found.",emoji:"🔍"},
+   {en:"use / uses",fr:"utiliser",tip:"Use a dictionary. ➜ used / used.",emoji:"🔧"},
+   {en:"live / lives",fr:"habiter / vivre",tip:"I live in Paris. ➜ lived / lived.",emoji:"🏠"},
+   {en:"work / works",fr:"travailler / fonctionner",tip:"It works! She works hard. ➜ worked / worked.",emoji:"⚙️"},
+ ]},
+ {id:"connectors",label:"Connecteurs",items:[
+   {en:"and",fr:"et — addition",tip:"I like dogs and cats.",emoji:"➕"},
+   {en:"also / as well / too",fr:"aussi / également",tip:"« Also » en milieu de phrase. « Too » en fin de phrase. I also like... / I like it too.",emoji:"➕"},
+   {en:"but",fr:"mais — opposition",tip:"I tried but I failed.",emoji:"↔️"},
+   {en:"however",fr:"cependant / pourtant",tip:"Plus formel que « but ». Souvent en début de phrase suivi d'une virgule.",emoji:"↔️"},
+   {en:"although / even though",fr:"bien que / même si",tip:"Although it rained, we went out. Introduit une concession.",emoji:"🌧️"},
+   {en:"or",fr:"ou — choix",tip:"Tea or coffee?",emoji:"🔀"},
+   {en:"because",fr:"parce que — raison",tip:"I'm late because the bus was slow.",emoji:"💡"},
+   {en:"since / as",fr:"puisque / comme — raison",tip:"Since you're here, let's start. As it was raining... Introduit une cause.",emoji:"🌧️"},
+   {en:"so",fr:"donc / alors — conséquence",tip:"It was raining, so we stayed inside.",emoji:"➡️"},
+   {en:"therefore / as a result",fr:"donc / par conséquent",tip:"Plus formel que « so ». He was ill; therefore he missed school.",emoji:"➡️"},
+   {en:"that is why",fr:"c'est pourquoi",tip:"He worked hard. That is why he succeeded.",emoji:"🎯"},
+   {en:"then",fr:"puis / ensuite — ordre",tip:"First... then... finally.",emoji:"⏭️"},
+   {en:"next",fr:"ensuite / puis",tip:"First we read, next we answered questions.",emoji:"2️⃣"},
+   {en:"first / firstly",fr:"d'abord / premièrement",tip:"First, let me explain...",emoji:"1️⃣"},
+   {en:"finally / lastly",fr:"enfin / finalement",tip:"Finally, we can conclude that...",emoji:"🏁"},
+   {en:"after",fr:"après",tip:"After the lesson, we had lunch.",emoji:"⏩"},
+   {en:"before",fr:"avant",tip:"Before you leave, check your work.",emoji:"⏪"},
+   {en:"when",fr:"quand / lorsque",tip:"When I grow up, I want to be...",emoji:"⏰"},
+   {en:"while / as",fr:"pendant que / alors que",tip:"She listened while he spoke. Deux actions simultanées.",emoji:"🔄"},
+   {en:"until",fr:"jusqu'à ce que / jusqu'à",tip:"Wait until I come back.",emoji:"⏳"},
+   {en:"as soon as",fr:"dès que / aussitôt que",tip:"Call me as soon as you arrive.",emoji:"⚡"},
+   {en:"in order to / to + inf.",fr:"pour / afin de",tip:"She studied hard in order to pass.",emoji:"🎯"},
+   {en:"so that",fr:"pour que / afin que",tip:"He spoke slowly so that everyone understood.",emoji:"🗣️"},
+   {en:"if",fr:"si — condition",tip:"If it rains, I'll stay home.",emoji:"❓"},
+   {en:"unless",fr:"à moins que",tip:"I'll go unless it rains. = I'll go if it doesn't rain.",emoji:"🚫"},
+   {en:"despite / in spite of",fr:"malgré",tip:"Despite the rain, they played. ➜ suivi d'un nom ou -ing.",emoji:"💪"},
+   {en:"for example / such as",fr:"par exemple",tip:"For example, ... / such as dogs, cats... Donner des exemples.",emoji:"📋"},
+   {en:"in fact / actually",fr:"en fait / en réalité",tip:"I thought it was easy. In fact, it was hard.",emoji:"💡"},
+   {en:"on the other hand",fr:"d'un autre côté",tip:"Pour introduire un point de vue opposé.",emoji:"⚖️"},
+ ]},
+ {id:"articles",label:"Articles & quantité",items:[
+   {en:"a / an",fr:"un / une",tip:"« an » devant une voyelle (an apple).",emoji:"1️⃣"},
+   {en:"the",fr:"le / la / les",tip:"Article défini, pour parler de quelque chose de précis.",emoji:"🎯"},
+   {en:"some",fr:"des / un peu de",tip:"Dans les phrases affirmatives.",emoji:"➕"},
+   {en:"any",fr:"des / aucun",tip:"Dans les questions et négations.",emoji:"❓"},
+   {en:"much",fr:"beaucoup (indénombrable)",tip:"Avec ce qu'on ne compte pas (much water).",emoji:"💧"},
+   {en:"many",fr:"beaucoup (dénombrable)",tip:"Avec ce qu'on compte (many books).",emoji:"📚"},
+   {en:"no",fr:"aucun / pas de",tip:"« There is no... » = il n'y a pas de...",emoji:"🚫"},
+ ]},
+ {id:"heure",label:"Dire l'heure",items:[
+   {en:"What time is it?",fr:"Quelle heure est-il ?",tip:"La question pour demander l'heure. Réponse : It's...",emoji:"🕐"},
+   {en:"It's one o'clock",fr:"Il est une heure",tip:"O'clock = heure pile, sans minutes.",emoji:"🕐"},
+   {en:"It's half past two",fr:"Il est deux heures et demie",tip:"Half past = et demie. Half past 3 = 3h30.",emoji:"🕞"},
+   {en:"It's quarter past three",fr:"Il est trois heures et quart",tip:"Quarter past = et quart. Quarter past 4 = 4h15.",emoji:"🕓"},
+   {en:"It's quarter to four",fr:"Il est quatre heures moins le quart",tip:"Quarter to = moins le quart. Quarter to 5 = 4h45.",emoji:"🕟"},
+   {en:"It's ten past five",fr:"Il est cinq heures dix",tip:"[minutes] past [heure] = avant la demi-heure.",emoji:"🕔"},
+   {en:"It's twenty to six",fr:"Il est six heures moins vingt",tip:"[minutes] to [heure suivante] = après la demi-heure.",emoji:"🕠"},
+   {en:"am",fr:"du matin (minuit → midi)",tip:"Ante meridiem. 9am = 9h du matin.",emoji:"🌅"},
+   {en:"pm",fr:"de l'après-midi / du soir (midi → minuit)",tip:"Post meridiem. 3pm = 15h.",emoji:"🌆"},
+   {en:"noon / midday",fr:"midi",tip:"12pm = noon = midday.",emoji:"☀️"},
+   {en:"midnight",fr:"minuit",tip:"12am = midnight.",emoji:"🌙"},
+ ]},
+ {id:"chiffres",label:"Chiffres -teen / -ty",items:[
+   {en:"thirteen — 13",fr:"treize",tip:"-TEEN = entre 13 et 19. Le son porte sur -TEEN.",emoji:"🔢"},
+   {en:"thirty — 30",fr:"trente",tip:"-TY = dizaines (30 à 90). Le son porte sur le premier chiffre.",emoji:"🔟"},
+   {en:"fourteen — 14",fr:"quatorze",tip:"four + teen. Ne pas confondre avec forty (40).",emoji:"🔢"},
+   {en:"forty — 40",fr:"quarante",tip:"Attention : pas de « u » ! forty ≠ fourteen.",emoji:"🔟"},
+   {en:"fifteen — 15",fr:"quinze",tip:"fif + teen. Lien avec « five ».",emoji:"🔢"},
+   {en:"fifty — 50",fr:"cinquante",tip:"fif + ty. Même racine que fifteen.",emoji:"🔟"},
+   {en:"sixteen — 16",fr:"seize",tip:"six + teen.",emoji:"🔢"},
+   {en:"sixty — 60",fr:"soixante",tip:"six + ty.",emoji:"🔟"},
+   {en:"seventeen — 17",fr:"dix-sept",tip:"seven + teen.",emoji:"🔢"},
+   {en:"seventy — 70",fr:"soixante-dix",tip:"seven + ty.",emoji:"🔟"},
+   {en:"eighteen — 18",fr:"dix-huit",tip:"eigh + teen. Vient de « eight ».",emoji:"🔢"},
+   {en:"eighty — 80",fr:"quatre-vingts",tip:"eigh + ty. Même racine.",emoji:"🔟"},
+   {en:"nineteen — 19",fr:"dix-neuf",tip:"nine + teen.",emoji:"🔢"},
+   {en:"ninety — 90",fr:"quatre-vingt-dix",tip:"nine + ty.",emoji:"🔟"},
+ ]},
+ {id:"date",label:"Dire la date",items:[
+   {en:"Monday",fr:"lundi",tip:"Toujours avec une majuscule en anglais !",emoji:"📅"},
+   {en:"Tuesday",fr:"mardi",tip:"Tu-ès-dé.",emoji:"📅"},
+   {en:"Wednesday",fr:"mercredi",tip:"Prononcé « Wenz-day ».",emoji:"📅"},
+   {en:"Thursday",fr:"jeudi",tip:"Thor's day — le jour de Thor.",emoji:"📅"},
+   {en:"Friday",fr:"vendredi",tip:"Fry-day.",emoji:"📅"},
+   {en:"Saturday",fr:"samedi",tip:"Sat-er-day.",emoji:"📅"},
+   {en:"Sunday",fr:"dimanche",tip:"Sun's day — le jour du soleil.",emoji:"📅"},
+   {en:"January / February / March",fr:"janvier / février / mars",tip:"Jan — Feb — March. Feb : 2 syllabes : Feb-ru-ary.",emoji:"🗓️"},
+   {en:"April / May / June",fr:"avril / mai / juin",tip:"Apr — May — June.",emoji:"🗓️"},
+   {en:"July / August / September",fr:"juillet / août / septembre",tip:"Ju-LY — AW-gust — Sep-TEM-ber.",emoji:"🗓️"},
+   {en:"October / November / December",fr:"octobre / novembre / décembre",tip:"Oc-TO-ber — No-VEM-ber — De-CEM-ber.",emoji:"🗓️"},
+   {en:"1st, 2nd, 3rd, 4th...",fr:"1er, 2e, 3e, 4e... (nombres ordinaux)",tip:"1st=first, 2nd=second, 3rd=third, puis 4th, 5th... Exceptions : 11th, 12th, 13th.",emoji:"🏅"},
+   {en:"It's Monday the 3rd of June",fr:"C'est le lundi 3 juin",tip:"Formule : It's [jour] the [ordinal] of [mois]. Ex : It's Friday the 26th of July.",emoji:"📆"},
+   {en:"My birthday is on the 15th of May",fr:"Mon anniversaire est le 15 mai",tip:"On the + date. Utilise on pour les dates précises.",emoji:"🎂"},
+ ]}
+];
+
+const GRAMMAIRE_GROUPS = [
  {id:"pronouns",label:"Pronoms",items:[
    {en:"I",fr:"je",tip:"Toujours en majuscule en anglais !",emoji:"🙋"},
    {en:"you",fr:"tu / vous",tip:"Pas de différence tu/vous en anglais.",emoji:"👉"},
@@ -832,108 +1031,88 @@ const GRAMMAR_GROUPS = [
    {en:"me / him / her / us / them",fr:"moi / lui / elle / nous / eux",tip:"Pronoms compléments : après un verbe ou une préposition.",emoji:"➡️"},
    {en:"my / your / his / her / its / our / their",fr:"mon-ma-mes / ton-ta-tes / son-sa-ses...",tip:"Pronoms possessifs : ils ne changent jamais avec le nom.",emoji:"🔑"},
  ]},
- {id:"question",label:"Mots interrogatifs",items:[
-   {en:"who",fr:"qui",tip:"Pour parler d'une personne.",emoji:"❓"},
-   {en:"what",fr:"quoi / quel",tip:"Pour une chose ou une idée.",emoji:"❓"},
-   {en:"where",fr:"où",tip:"Pour un lieu.",emoji:"📍"},
-   {en:"when",fr:"quand",tip:"Pour un moment, une date.",emoji:"⏰"},
-   {en:"why",fr:"pourquoi",tip:"On répond avec « because ».",emoji:"🤔"},
-   {en:"how",fr:"comment",tip:"Pour la manière.",emoji:"⚙️"},
-   {en:"which",fr:"lequel / quel (parmi plusieurs)",tip:"Quand il y a un choix limité.",emoji:"👉"},
-   {en:"how many / how much",fr:"combien (dénombrable / indénombrable)",tip:"« many » pour ce qu'on compte, « much » pour ce qu'on ne compte pas.",emoji:"🔢"},
+ {id:"concept",label:"Tense vs Aspect — le principe",items:[
+   {en:"Le TEMPS (Tense) → répond à : QUAND ?",fr:"Présent / Passé / Futur",tip:"Le temps situe l'action dans le temps. En anglais : présent, passé, futur.",emoji:"⏰"},
+   {en:"L'ASPECT → répond à : COMMENT l'action est vue ?",fr:"Simple / Continu / Parfait",tip:"L'aspect dit si l'action est un fait (simple), en cours (continu) ou liée à un autre moment (parfait). ➜ Tense + Aspect = la forme verbale complète.",emoji:"🔭"},
+   {en:"Aspect SIMPLE",fr:"Fait, habitude, vérité générale",tip:"On ne s'intéresse pas à la durée — on voit l'action comme un tout. Ex : I eat breakfast every day. She visited London. It will rain.",emoji:"⬜"},
+   {en:"Aspect CONTINU (en -ing)",fr:"Action en cours, on voit la durée",tip:"On est « dans » l'action en train de se passer. Toujours avec be + V-ing. Ex : I am eating. He was sleeping.",emoji:"▶️"},
+   {en:"Aspect PARFAIT (have + participe passé)",fr:"Lien entre deux moments",tip:"Une action passée est encore pertinente à un moment ultérieur. Ex : I have lost my keys = je ne les ai toujours pas.",emoji:"🔗"},
+   {en:"TEMPS × ASPECT — le tableau",fr:"6 formes principales à retenir",tip:"Présent Simple / Past Simple / Future ➜ aspect simple. Present Continuous / Past Continuous ➜ aspect continu. Present Perfect / Past Perfect ➜ aspect parfait.",emoji:"📊"},
  ]},
- {id:"prepositions",label:"Prépositions",items:[
-   {en:"in",fr:"dans",tip:"À l'intérieur d'un espace (in a box, in London).",emoji:"📦"},
-   {en:"on",fr:"sur",tip:"Au contact d'une surface (on the table).",emoji:"🟫"},
-   {en:"at",fr:"à (heure / lieu précis)",tip:"Pour une heure (at 8) ou un point précis (at school).",emoji:"📌"},
-   {en:"under",fr:"sous",tip:"En dessous de quelque chose.",emoji:"⬇️"},
-   {en:"behind",fr:"derrière",tip:"À l'arrière de quelque chose.",emoji:"↩️"},
-   {en:"next to",fr:"à côté de",tip:"Juste à côté.",emoji:"↔️"},
-   {en:"between",fr:"entre",tip:"Entre deux éléments.",emoji:"🔀"},
-   {en:"in front of",fr:"devant",tip:"À l'avant de quelque chose.",emoji:"➡️"},
-   {en:"near",fr:"près de",tip:"Pas loin de.",emoji:"📍"},
+ {id:"simple",label:"Aspect Simple",items:[
+   {en:"Present Simple",fr:"Habitude, vérité, fait permanent",tip:"I eat / She eats. ➜ He/she/it : verbe + s. Signes : every day, always, usually, often, never. Ex : She reads every day.",emoji:"☀️"},
+   {en:"Past Simple",fr:"Fait terminé dans le passé",tip:"Régulier → +ed : visited, worked. Irrégulier → 2ᵉ colonne : went, saw, made. ➜ Signes : yesterday, last year, ago, in 2020.",emoji:"⏪"},
+   {en:"Future — will",fr:"Prédiction, décision spontanée",tip:"will + base verbale — jamais de s, jamais de to. ➜ It will rain. I'll help you. Signes : probably, I think, I'm sure.",emoji:"⚡"},
+   {en:"Future — going to",fr:"Intention décidée, plan prévu",tip:"am/is/are + going to + base verbale. ➜ I'm going to study medicine. She's going to visit her aunt. Signe : intention déjà dans la tête.",emoji:"🗺️"},
+   {en:"Conditional — would",fr:"Action hypothétique (conditionnel)",tip:"would + base verbale. ➜ I would travel if I could. Jamais de would dans la proposition en if.",emoji:"💭"},
+   {en:"✏️ Piège Simple vs Continu",fr:"I eat pizza ≠ I am eating pizza",tip:"Simple = habitude (I eat pizza every Friday). Continu = en train de = en ce moment (I am eating pizza right now).",emoji:"⚠️"},
  ]},
- {id:"verbs",label:"Verbes de base",items:[
-   {en:"am / is / are",fr:"suis / es-est / sommes-êtes-sont",tip:"Le verbe « to be » : I am, he/she/it is, you/we/they are.",emoji:"🟢"},
-   {en:"have / has",fr:"ai-as-avons-avez-ont / a",tip:"« has » seulement avec he/she/it.",emoji:"🎒"},
-   {en:"do / does",fr:"auxiliaire pour les questions et négations",tip:"« does » avec he/she/it, sinon « do ».",emoji:"❔"},
-   {en:"can",fr:"peux / peut / pouvoir",tip:"Jamais de « s » et jamais de « to » après can.",emoji:"💪"},
-   {en:"must",fr:"devoir (obligation)",tip:"Obligation forte, pas de choix.",emoji:"⚠️"},
-   {en:"would like",fr:"voudrait / aimerait",tip:"Pour demander poliment : « I would like... ».",emoji:"🙏"},
+ {id:"continuous",label:"Aspect Continu (-ing)",items:[
+   {en:"Present Continuous",fr:"Action EN COURS maintenant",tip:"am/is/are + V-ing. ➜ I am reading. She is working. Signes : right now, at the moment, at present, look!, listen!",emoji:"▶️"},
+   {en:"Past Continuous",fr:"Action EN COURS à un moment du passé",tip:"was/were + V-ing. ➜ He was sleeping when the phone rang. Signes : while, when + past simple (interruption).",emoji:"🌒"},
+   {en:"✏️ Piège : Simple vs Continu au passé",fr:"I read vs I was reading",tip:"Past Simple = fait terminé (I read the book = je l'ai fini). Past Continuous = en cours à ce moment (I was reading at 8pm = en train de lire).",emoji:"⚠️"},
+   {en:"✏️ Verbes sans forme -ing",fr:"Stative verbs : pas de continu !",tip:"know, like, love, hate, want, need, prefer, believe, understand, seem, contain. ➜ ❌ I am knowing ➜ ✅ I know.",emoji:"🚫"},
+   {en:"Formation V-ing : attention !",fr:"Règles d'orthographe",tip:"Voyelle + consonne → double : run→running, sit→sitting. E muet → suppression : make→making, have→having. -ie → -ying : lie→lying.",emoji:"🖊️"},
  ]},
- {id:"connectors",label:"Connecteurs",items:[
-   {en:"and",fr:"et",tip:"Pour ajouter une idée.",emoji:"➕"},
-   {en:"but",fr:"mais",tip:"Pour une opposition.",emoji:"↔️"},
-   {en:"or",fr:"ou",tip:"Pour un choix.",emoji:"🔀"},
-   {en:"because",fr:"parce que",tip:"Pour donner une raison.",emoji:"💡"},
-   {en:"so",fr:"donc / alors",tip:"Pour une conséquence.",emoji:"➡️"},
-   {en:"then",fr:"puis / ensuite",tip:"Pour l'ordre des actions.",emoji:"⏭️"},
-   {en:"after",fr:"après",tip:"Indique ce qui vient après.",emoji:"⏩"},
-   {en:"before",fr:"avant",tip:"Indique ce qui vient avant.",emoji:"⏪"},
+ {id:"perfect",label:"Aspect Parfait (have + pp)",items:[
+   {en:"Present Perfect",fr:"Passé encore pertinent MAINTENANT",tip:"have/has + participe passé. ➜ I have lost my keys (= je ne les ai toujours pas). Signes : already, just, yet, ever, never, since, for.",emoji:"🔗"},
+   {en:"Past Perfect",fr:"Passé AVANT un autre passé",tip:"had + participe passé. ➜ She had left before he arrived. Signes : before, after, already, by the time, when.",emoji:"⏮️"},
+   {en:"Since vs For",fr:"Depuis (point de départ) vs Depuis (durée)",tip:"Since = depuis quand : since Monday, since 2020. For = durée : for two hours, for years. ➜ I have lived here for 3 years / since 2021.",emoji:"⏱️"},
+   {en:"Already / Just / Yet",fr:"Déjà / Juste / Encore (pas encore)",tip:"Already (affirm.) : I've already eaten. Just (récent) : She's just left. Yet (question/négat.) : Have you finished yet? / I haven't finished yet.",emoji:"🔔"},
+   {en:"Ever / Never",fr:"Déjà (dans ta vie) / Jamais",tip:"Ever (question) : Have you ever been to London? Never (négation) : I have never eaten sushi.",emoji:"🌍"},
+   {en:"✏️ Piège : Present Perfect vs Past Simple",fr:"I have seen it ≠ I saw it yesterday",tip:"Present Perfect → pas de date précise (lien avec maintenant). Past Simple → date précise (yesterday, in 2020, last year). ❌ I have seen it yesterday.",emoji:"⚠️"},
  ]},
- {id:"articles",label:"Articles & quantité",items:[
-   {en:"a / an",fr:"un / une",tip:"« an » devant une voyelle (an apple).",emoji:"1️⃣"},
-   {en:"the",fr:"le / la / les",tip:"Article défini, pour parler de quelque chose de précis.",emoji:"🎯"},
-   {en:"some",fr:"des / un peu de",tip:"Dans les phrases affirmatives.",emoji:"➕"},
-   {en:"any",fr:"des / aucun",tip:"Dans les questions et négations.",emoji:"❓"},
-   {en:"much",fr:"beaucoup (indénombrable)",tip:"Avec ce qu'on ne compte pas (much water).",emoji:"💧"},
-   {en:"many",fr:"beaucoup (dénombrable)",tip:"Avec ce qu'on compte (many books).",emoji:"📚"},
-   {en:"no",fr:"aucun / pas de",tip:"« There is no... » = il n'y a pas de...",emoji:"🚫"},
+ {id:"modals",label:"Auxiliaires modaux",items:[
+   {en:"can",fr:"capacité / permission informelle",tip:"I can swim. Can I go? ➜ Jamais de « to » ni de « s » après. Négatif : cannot / can't.",emoji:"💪"},
+   {en:"could",fr:"capacité passée / demande polie",tip:"I could run fast as a kid. Could you help me? ➜ Plus poli que can pour une requête.",emoji:"🎩"},
+   {en:"must",fr:"obligation forte (vient de soi)",tip:"You must wear a seatbelt. ➜ Vient de l'intérieur. Négatif : mustn't = interdit !",emoji:"⚠️"},
+   {en:"mustn't",fr:"interdiction absolue",tip:"You mustn't cheat. ≠ don't have to (pas obligé). ➜ Mustn't = c'est interdit.",emoji:"🚫"},
+   {en:"have to",fr:"obligation externe (règle, loi)",tip:"I have to wear a uniform at school. ➜ Vient de l'extérieur. Négatif : don't have to = pas obligé.",emoji:"📋"},
+   {en:"should",fr:"conseil / recommandation",tip:"You should sleep more. ➜ Moins fort que must. Conseil bienveillant.",emoji:"💡"},
+   {en:"may",fr:"permission formelle / probabilité",tip:"May I come in? It may rain. ➜ Plus formel que can. Probabilité : peut-être.",emoji:"🎓"},
+   {en:"might",fr:"probabilité faible",tip:"She might be late. ➜ Moins sûr que may. Signe : maybe, perhaps.",emoji:"🌫️"},
+   {en:"shall",fr:"suggestion / offre (we/I)",tip:"Shall I open the window? Shall we go? ➜ Uniquement avec I et we.",emoji:"🤝"},
+   {en:"would",fr:"conditionnel / habitude passée",tip:"I would like a coffee. We would go fishing every summer. ➜ Aussi pour les demandes polies.",emoji:"⭐"},
  ]},
+ {id:"place-prep",label:"Prépositions de lieu",items:[
+   {en:"in",fr:"dans / à l'intérieur",tip:"À l'intérieur d'un espace fermé ou d'une ville/pays (in a box, in London, in France).",emoji:"📦"},
+   {en:"on",fr:"sur / au contact de",tip:"Au contact d'une surface (on the table, on the wall, on the floor).",emoji:"🟫"},
+   {en:"at",fr:"à (point précis)",tip:"Pour un lieu précis ou une adresse (at school, at the door, at 5 Baker Street).",emoji:"📌"},
+   {en:"under",fr:"sous",tip:"Directement en dessous (under the bridge, under the table).",emoji:"⬇️"},
+   {en:"above",fr:"au-dessus (sans contact)",tip:"Plus haut que, sans contact direct (above the clouds ≠ on).",emoji:"⬆️"},
+   {en:"below",fr:"en dessous (sans contact)",tip:"Plus bas que, sans contact direct (below sea level).",emoji:"🔽"},
+   {en:"behind",fr:"derrière",tip:"À l'arrière (behind the door, behind the school).",emoji:"↩️"},
+   {en:"in front of",fr:"devant",tip:"À l'avant (in front of the class, in front of the mirror).",emoji:"➡️"},
+   {en:"next to / beside",fr:"à côté de",tip:"Juste adjacent (next to the window, sit beside me).",emoji:"↔️"},
+   {en:"between",fr:"entre (deux éléments)",tip:"Exactement au milieu de deux choses (between the chairs).",emoji:"⬛"},
+   {en:"among",fr:"parmi (plusieurs éléments)",tip:"Au milieu d'un groupe (among the trees, among friends).",emoji:"🌿"},
+   {en:"near / close to",fr:"près de",tip:"Pas loin de, mais sans contact (near the station).",emoji:"📍"},
+   {en:"far from",fr:"loin de",tip:"À grande distance (far from home, far from the coast).",emoji:"🌅"},
+   {en:"opposite",fr:"en face de",tip:"De l'autre côté (opposite the bank, opposite my house).",emoji:"🔁"},
+   {en:"along",fr:"le long de",tip:"Parallèle à (along the river, along the corridor).",emoji:"➰"},
+   {en:"through",fr:"à travers",tip:"D'un bout à l'autre (through the forest, through the window).",emoji:"🚪"},
+   {en:"across",fr:"de l'autre côté / en traversant",tip:"En traversant une surface (across the road, across the river).",emoji:"🌉"},
+   {en:"around",fr:"autour de",tip:"Tout autour (around the table, around the world).",emoji:"🔄"},
+   {en:"inside / outside",fr:"à l'intérieur / à l'extérieur",tip:"Pour préciser clairement : inside the house, outside the classroom.",emoji:"🏠"},
+ ]}
 ];
 
-const SURVIVAL_ITEMS = [
- {en:"Can you repeat, please?",fr:"Pouvez-vous répéter, s'il vous plaît ?",tip:"La phrase la plus utile en classe !",emoji:"🔁"},
- {en:"Can you speak more slowly, please?",fr:"Pouvez-vous parler plus lentement ?",tip:"Pour demander de ralentir.",emoji:"🐢"},
- {en:"How do you say... in English?",fr:"Comment dit-on... en anglais ?",tip:"Pour demander un mot qui manque.",emoji:"🗣️"},
- {en:"What does... mean?",fr:"Que signifie... ?",tip:"Pour demander le sens d'un mot.",emoji:"🧐"},
- {en:"I don't understand",fr:"Je ne comprends pas",tip:"Pas grave de le dire, ça aide le prof à reformuler.",emoji:"😅"},
- {en:"I don't know",fr:"Je ne sais pas",tip:"Mieux que de rester silencieux.",emoji:"🤷"},
- {en:"Can I go to the toilet, please?",fr:"Puis-je aller aux toilettes ?",tip:"Phrase pratique et polie.",emoji:"🚻"},
- {en:"Excuse me",fr:"Excusez-moi",tip:"Pour interpeller poliment.",emoji:"🙋"},
- {en:"Sorry, I'm late",fr:"Désolé, je suis en retard",tip:"Pour s'excuser en entrant en classe.",emoji:"⏰"},
- {en:"Can you help me, please?",fr:"Pouvez-vous m'aider ?",tip:"Demander de l'aide sans crainte.",emoji:"🆘"},
- {en:"I think that...",fr:"Je pense que...",tip:"Pour donner un avis à l'oral.",emoji:"💭"},
- {en:"In my opinion...",fr:"À mon avis...",tip:"Une autre façon de donner son avis.",emoji:"🗯️"},
-];
 
-const CLASSROOM_CLUSTERS = [
- {label:"Vie de classe", refs:["Open your book(s)","Close your book(s)","Listen (and repeat)","Look at the board","Stand up","Sit down","Put up your hand","Work in pairs","Work in groups","Be quiet / Quietly","Pay attention","Get into pairs","Turn to page..."]},
- {label:"À l'écrit", refs:["Underline","Circle","Cross out","Fill in the gaps","Match A with B","Tick the box","Number the sentences","Put the words in order","Translate","Correct the mistakes","Write a sentence","Answer the question(s)"]},
- {label:"À l'oral", refs:["Repeat after me","Spell it"]},
- {label:"Devoirs & matériel", refs:["Hand in your work","Take out your copybook","Take out your pencil case","Homework","Due for next time"]},
-];
-
-const SURVIVAL_CLUSTERS = [
- {label:"Demander de l'aide", refs:["Can you repeat, please?","Can you speak more slowly, please?","Can you help me, please?","I don't understand","I don't know"]},
- {label:"Vocabulaire", refs:["How do you say... in English?","What does... mean?"]},
- {label:"Politesse", refs:["Excuse me","Sorry, I'm late","Can I go to the toilet, please?"]},
- {label:"Donner son avis", refs:["I think that...","In my opinion..."]},
-];
-
-function buildClusters(cat){
-  if(cat.groups){
-    return cat.groups.map(g => ({label:g.label, items:g.items}));
-  }
-  const clusters = cat.id === "classroom" ? CLASSROOM_CLUSTERS : SURVIVAL_CLUSTERS;
-  return clusters.map(c => ({
-    label:c.label,
-    items: c.refs.map(en => cat.items.find(it=>it.en===en)).filter(Boolean),
-  }));
-}
 
 const CATEGORIES = [
- {id:"classroom",title:"Classroom English",subtitle:"Comprendre les consignes en cours",Icon:IconClassroom,accent:"green",cls:"cat-classroom",items:CLASSROOM_ITEMS},
- {id:"grammar",title:"Mots qui bloquent",subtitle:"Pronoms, prépositions, verbes de base...",Icon:IconGrammar,accent:"yellow",cls:"cat-grammar",groups:GRAMMAR_GROUPS},
- {id:"survival",title:"Survival Phrases",subtitle:"Pour oser parler à l'oral",Icon:IconSurvival,accent:"red",cls:"cat-survival",items:SURVIVAL_ITEMS},
+ {id:"classroom",title:"Classroom English",subtitle:"Consignes, matériel, vie de classe",Icon:IconClassroom,accent:"green",cls:"cat-classroom",groups:CLASSROOM_GROUPS},
+ {id:"grammar",title:"Mots qui bloquent",subtitle:"Verbes, connecteurs, heure, date...",Icon:IconGrammar,accent:"yellow",cls:"cat-grammar",groups:GRAMMAR_GROUPS},
+ {id:"grammaire",title:"Grammaire",subtitle:"Temps, aspects, modaux, pronoms, prépositions",Icon:IconGrammaire,accent:"lightblue",cls:"cat-grammaire",groups:GRAMMAIRE_GROUPS},
+ {id:"survival",title:"Survival Phrases",subtitle:"Phrases de survie + boîte à sentiments",Icon:IconSurvival,accent:"red",cls:"cat-survival",groups:SURVIVAL_GROUPS},
 ];
 
 function getCategoryItems(cat, groupId){
-  if(cat.items) return cat.items;
+  const groups = cat.groups;
+  if(!groups) return cat.items||[];
   if(groupId === "all"){
-    return cat.groups.flatMap(g => g.items.map(it => ({...it, group:g.label})));
+    return groups.flatMap(g => g.items.map(it => ({...it, group:g.label})));
   }
-  const g = cat.groups.find(g=>g.id===groupId);
+  const g = groups.find(g=>g.id===groupId);
   return g ? g.items.map(it=>({...it, group:g.label})) : [];
 }
 
@@ -1152,7 +1331,7 @@ function CategoryScreen({cat, onBack, goMode, groupId, setGroupId}){
       </div>
       <p className="section-sub">{cat.subtitle}</p>
 
-      {cat.groups &&
+      {(cat.groups || cat.id==="grammaire") &&
         <div className="chip-row">
           <button className={"chip "+(groupId==="all"?"active":"")} onClick={()=>setGroupId("all")}>Tout</button>
           {cat.groups.map(g=>(
@@ -1191,6 +1370,16 @@ function CategoryScreen({cat, onBack, goMode, groupId, setGroupId}){
           <span>Tout le thème récapitulé en un coup d'œil</span>
         </span>
       </button>
+
+      {cat.id==="grammar" && groupId==="heure" &&
+        <button className="map-btn" style={{marginTop:8}} onClick={()=>goMode("horloge")}>
+          <span className="mi" style={{background:"var(--l-lightblue)",color:"#fff"}}>🕐</span>
+          <span className="txt">
+            <b>Cadran interactif</b>
+            <span>Aiguilles animées, mémo des expressions, entraînement</span>
+          </span>
+        </button>
+      }
     </div>
   );
 }
@@ -1431,6 +1620,226 @@ const MM_PALETTE = [
 function polar(r, angleDeg){
   const rad = angleDeg * Math.PI / 180;
   return {x: 50 + r*Math.cos(rad), y: 50 + r*Math.sin(rad)};
+}
+
+/* ---- Horloge helpers ---- */
+const hName = h => ['twelve','one','two','three','four','five','six','seven','eight','nine','ten','eleven'][h%12];
+const MWORDS = {5:'five',10:'ten',15:'quarter',20:'twenty',25:'twenty-five'};
+
+function t2en(h,m){
+  if(m===0) return `It's ${hName(h)} o'clock`;
+  if(m===30) return `It's half past ${hName(h)}`;
+  if(m===15) return `It's quarter past ${hName(h)}`;
+  if(m===45) return `It's quarter to ${hName(h+1)}`;
+  if(m<30)  return `It's ${MWORDS[m]||m} past ${hName(h)}`;
+  return `It's ${MWORDS[60-m]||(60-m)} to ${hName(h+1)}`;
+}
+function t2fr(h,m){
+  const fr=['douze','une','deux','trois','quatre','cinq','six','sept','huit','neuf','dix','onze'];
+  const hr=h%12; const nxt=(hr+1)%12;
+  const pl=hr!==1?'s':''; const npl=nxt!==1?'s':'';
+  if(m===0) return h===12?'Il est midi':`Il est ${fr[hr]} heure${pl}`;
+  if(m===15) return `Il est ${fr[hr]} heure${pl} et quart`;
+  if(m===30) return `Il est ${fr[hr]} heure${pl} et demie`;
+  if(m===45) return `Il est ${fr[nxt]} heure${npl} moins le quart`;
+  if(m<30)  return `Il est ${fr[hr]} heure${pl} ${m}`;
+  return `Il est ${fr[nxt]} heure${npl} moins ${60-m}`;
+}
+
+const CLOCK_PRESETS = [
+  {h:1,m:0}, {h:3,m:15}, {h:6,m:30}, {h:9,m:45},
+  {h:2,m:10},{h:4,m:20}, {h:7,m:25}, {h:8,m:35},
+  {h:5,m:40},{h:10,m:50},{h:11,m:5}, {h:12,m:0},
+];
+
+function ClockSVG({h, m, size=240, showZones=false}){
+  const cx=50, cy=50, r=44;
+  const pt = (angleDeg, len) => {
+    const rad = (angleDeg-90)*Math.PI/180;
+    return {x: cx+len*Math.cos(rad), y: cy+len*Math.sin(rad)};
+  };
+  const hourAngle   = ((h%12)+m/60)*30;
+  const minuteAngle = m*6;
+  const nums = [12,1,2,3,4,5,6,7,8,9,10,11];
+  const pastPath = `M${cx},${cy} L${cx},${cy-r} A${r},${r} 0 0 1 ${cx},${cy+r} Z`;
+  const toPath   = `M${cx},${cy} L${cx},${cy+r} A${r},${r} 0 0 1 ${cx},${cy-r} Z`;
+  return (
+    <svg width={size} height={size} viewBox="4 4 92 92" style={{display:'block'}}>
+      <defs>
+        <clipPath id="cf"><circle cx={cx} cy={cy} r={r}/></clipPath>
+      </defs>
+      {/* Base face */}
+      <circle cx={cx} cy={cy} r={r} fill="var(--surface)" stroke="var(--l-brown-deep)" strokeWidth="1.8"/>
+      {/* Colored sectors — clipped to face so they stay inside the circle */}
+      {showZones && <>
+        <path d={pastPath} fill="rgba(47,140,107,0.28)" clipPath="url(#cf)"/>
+        <path d={toPath}   fill="rgba(139,35,24,0.22)"  clipPath="url(#cf)"/>
+        <line x1={cx} y1={cy-r} x2={cx} y2={cy+r} stroke="var(--surface-2)" strokeWidth="1" strokeDasharray="3 2"/>
+        <text x={cx+22} y={cy+3} textAnchor="middle" dominantBaseline="middle"
+          fontSize="8.5" fontFamily="system-ui" fontWeight="800" fill="rgba(47,140,107,0.65)">PAST</text>
+        <text x={cx-22} y={cy+3} textAnchor="middle" dominantBaseline="middle"
+          fontSize="8.5" fontFamily="system-ui" fontWeight="800" fill="rgba(139,35,24,0.60)">TO</text>
+      </>}
+      {/* Inner ring */}
+      <circle cx={cx} cy={cy} r={r-1} fill="none" stroke="var(--surface-2)" strokeWidth="0.7"/>
+      {/* Ticks + numbers */}
+      {nums.map((n,i)=>{
+        const isMajor=i%3===0;
+        const isQtr  = showZones && (i===3||i===9);
+        const qColor = i===3?"rgba(47,140,107,0.9)":"rgba(139,35,24,0.9)";
+        const p=pt(i*30, isMajor?34.5:36); const t1=pt(i*30,r-0.5); const t2=pt(i*30,r-(isMajor?6:3));
+        return <React.Fragment key={i}>
+          <line x1={t1.x} y1={t1.y} x2={t2.x} y2={t2.y}
+            stroke={isQtr?qColor:"var(--ink)"} strokeWidth={isMajor?"2.2":"0.9"}/>
+          <text x={p.x} y={p.y} textAnchor="middle" dominantBaseline="middle"
+            fontSize={isMajor?"7.5":"5.2"} fontFamily="system-ui" fontWeight="700"
+            fill={isQtr?qColor:"var(--ink)"}>{n}</text>
+        </React.Fragment>;
+      })}
+      {/* Hands */}
+      <line x1={cx} y1={cy} x2={pt(hourAngle,27).x}   y2={pt(hourAngle,27).y}
+        stroke="var(--ink)" strokeWidth="3.5" strokeLinecap="round"/>
+      <line x1={cx} y1={cy} x2={pt(minuteAngle,38).x} y2={pt(minuteAngle,38).y}
+        stroke="var(--l-red-deep)" strokeWidth="2" strokeLinecap="round"/>
+      <circle cx={cx} cy={cy} r="3" fill="var(--l-red-deep)"/>
+    </svg>
+  );
+}
+
+function HorlogenScreen({onBack}){
+  const [tab, setTab] = useState('explore');
+  const [current, setCurrent] = useState({h:3,m:0});
+  const [showZones, setShowZones] = useState(false);
+  const [quiz, setQuiz] = useState(null);
+  const [answer, setAnswer] = useState(null);
+  const [score, setScore] = useState({ok:0,done:0});
+
+  function genQuiz(){
+    const h = Math.floor(Math.random()*12)+1;
+    const mPool = [0,5,10,15,20,25,30,35,40,45,50,55];
+    const m = mPool[Math.floor(Math.random()*mPool.length)];
+    const correct = t2en(h,m);
+    const wrongs = new Set();
+    while(wrongs.size<3){
+      const wh=Math.floor(Math.random()*12)+1;
+      const wm=mPool[Math.floor(Math.random()*mPool.length)];
+      const w=t2en(wh,wm);
+      if(w!==correct) wrongs.add(w);
+    }
+    setQuiz({h,m,correct,opts:shuffle([correct,...wrongs])});
+    setAnswer(null);
+  }
+
+  useEffect(()=>{ if(tab==='quiz'&&!quiz) genQuiz(); },[tab]);
+
+  function pick(opt){
+    if(answer) return;
+    setAnswer(opt);
+    setScore(s=>({ok:s.ok+(opt===quiz.correct?1:0),done:s.done+1}));
+  }
+
+  return (
+    <div>
+      <div className="backbar">
+        <button className="backbtn" onClick={onBack}><IconChevronLeft/></button>
+        <h2 className="section-title display" style={{margin:0}}>Dire l'heure</h2>
+      </div>
+
+      <div className="chip-row" style={{marginBottom:12}}>
+        <button className={"chip "+(tab==='explore'?'active':'')} onClick={()=>setTab('explore')}>🕐 Cadran</button>
+        <button className={"chip "+(tab==='quiz'?'active':'')} onClick={()=>{setTab('quiz');if(!quiz)genQuiz();}}>⚡ Entraînement</button>
+      </div>
+
+      {tab==='explore' && (
+        <div>
+          {/* Clock with HTML labels — never cut, always readable */}
+          <div style={{maxWidth:300, margin:'0 auto'}}>
+            <p style={{textAlign:'center',fontWeight:700,color:'var(--l-green-deep)',margin:'0 0 5px',fontSize:14}}>o'clock</p>
+            <div style={{display:'flex',alignItems:'center',gap:10}}>
+              <div style={{flex:'0 0 56px',textAlign:'right',fontWeight:700,fontSize:13,lineHeight:1.3,
+                color:showZones?'rgba(139,35,24,0.9)':'var(--l-brown-deep)'}}>quarter<br/>to</div>
+              <div style={{flex:1}}><ClockSVG h={current.h} m={current.m} size={180} showZones={showZones}/></div>
+              <div style={{flex:'0 0 56px',textAlign:'left',fontWeight:700,fontSize:13,lineHeight:1.3,
+                color:showZones?'rgba(47,140,107,0.9)':'var(--l-lightblue-deep)'}}>quarter<br/>past</div>
+            </div>
+            <p style={{textAlign:'center',fontWeight:700,color:'var(--l-red-deep)',margin:'5px 0 0',fontSize:14}}>half past</p>
+          </div>
+
+          {/* Zone toggle button */}
+          <div style={{display:'flex',justifyContent:'center',margin:'12px 0 10px'}}>
+            <button onClick={()=>setShowZones(z=>!z)} className="btn btn-secondary"
+              style={{fontSize:13,padding:'9px 16px'}}>
+              {showZones ? '🎨 Masquer les zones past / to' : '🎨 Colorier les zones past / to'}
+            </button>
+          </div>
+          <div className="card" style={{textAlign:'center',margin:'14px 0',padding:'14px'}}>
+            <div className="display" style={{fontSize:20,marginBottom:4}}>{t2en(current.h,current.m)}</div>
+            <div style={{fontSize:13.5,color:'var(--ink-soft)'}}>{t2fr(current.h,current.m)}</div>
+          </div>
+          <p className="section-sub">Touche une heure pour animer les aiguilles :</p>
+          <div style={{display:'grid',gridTemplateColumns:'repeat(4,1fr)',gap:8}}>
+            {CLOCK_PRESETS.map((p,i)=>(
+              <button key={i}
+                className={"opt "+(current.h===p.h&&current.m===p.m?'correct':'')}
+                onClick={()=>setCurrent(p)}
+                style={{textAlign:'center',fontSize:14,fontWeight:700,padding:'9px 4px',fontFamily:'Cinzel,serif'}}>
+                {String(p.h).padStart(2,'0')}:{String(p.m).padStart(2,'0')}
+              </button>
+            ))}
+          </div>
+          <div className="card" style={{marginTop:16,padding:'12px 14px'}}>
+            <p className="eyebrow stamp" style={{marginBottom:8}}>Mémo expressions clés</p>
+            {[
+              {key:"o'clock",eg:"It's three o'clock",fr:"Il est trois heures"},
+              {key:"quarter past",eg:"It's quarter past four",fr:"Il est quatre heures et quart"},
+              {key:"half past",eg:"It's half past six",fr:"Il est six heures et demie"},
+              {key:"quarter to",eg:"It's quarter to nine",fr:"Il est neuf heures moins le quart"},
+              {key:"X past",eg:"It's ten past two",fr:"Il est deux heures dix"},
+              {key:"X to",eg:"It's twenty to eight",fr:"Il est huit heures moins vingt"},
+            ].map((item,i)=>(
+              <div key={i} style={{borderBottom:'1px solid var(--line)',padding:'7px 0',fontSize:13}}>
+                <span style={{fontWeight:700,color:'var(--l-green-deep)',marginRight:8}}>{item.key}</span>
+                <span style={{color:'var(--ink)'}}>{item.eg}</span>
+                <span style={{color:'var(--ink-soft)',marginLeft:6,fontSize:12}}>— {item.fr}</span>
+              </div>
+            ))}
+          </div>
+        </div>
+      )}
+
+      {tab==='quiz' && quiz && (
+        <div>
+          <ClockSVG h={quiz.h} m={quiz.m} size={230}/>
+          <div className="quiz-score" style={{marginTop:10}}>
+            Score : {score.ok} / {score.done}
+          </div>
+          <p className="quiz-q">How do you say this time in English ?</p>
+          <div className="quiz-opts">
+            {quiz.opts.map((opt,i)=>{
+              let cls='opt';
+              if(answer){
+                if(opt===quiz.correct) cls+=' correct';
+                else if(opt===answer) cls+=' wrong';
+              }
+              return <button key={i} className={cls} onClick={()=>pick(opt)}>{opt}</button>;
+            })}
+          </div>
+          {answer && (
+            <div>
+              <div className="quiz-feedback">
+                {answer===quiz.correct
+                  ? `Parfait ! ${t2fr(quiz.h,quiz.m)}.`
+                  : `Pas tout à fait. ${t2fr(quiz.h,quiz.m)}.`}
+              </div>
+              <button className="btn btn-primary btn-block" style={{marginTop:14}} onClick={genQuiz}>
+                Heure suivante →
+              </button>
+            </div>
+          )}
+        </div>
+      )}
+    </div>
+  );
 }
 
 function MindmapScreen({cat, onBack}){
@@ -1769,6 +2178,8 @@ function App(){
     } else if(mode === "mindmap"){
       const cat = CATEGORIES.find(c=>c.id===catId);
       body = <MindmapScreen cat={cat} onBack={backToCategory} />;
+    } else if(mode === "horloge"){
+      body = <HorlogenScreen onBack={backToCategory} />;
     }
   } else if(screen === "result"){
     body = <ResultScreen result={result} onHome={backToHome} onRetry={retrySame} />;
@@ -1790,16 +2201,19 @@ function App(){
       <div className="bottomnav">
         <div className="bottomnav-inner">
           <button className={"navbtn "+(screen==="home"?"active":"")} onClick={backToHome}>
-            <IconHome size={19} />Accueil
+            <IconHome size={18} />Accueil
           </button>
           <button className={"navbtn "+(screen==="category"&&catId==="classroom"?"active":"")} onClick={()=>goCategory("classroom")}>
-            <IconClassroom size={19} />Classroom
+            <IconClassroom size={18} />Classroom
           </button>
           <button className={"navbtn "+(screen==="category"&&catId==="grammar"?"active":"")} onClick={()=>goCategory("grammar")}>
-            <IconGrammar size={19} />Mots-clés
+            <IconGrammar size={18} />Vocab
+          </button>
+          <button className={"navbtn "+(screen==="category"&&catId==="grammaire"?"active":"")} onClick={()=>goCategory("grammaire")}>
+            <IconGrammaire size={18} />Grammaire
           </button>
           <button className={"navbtn "+(screen==="category"&&catId==="survival"?"active":"")} onClick={()=>goCategory("survival")}>
-            <IconSurvival size={19} />Survival
+            <IconSurvival size={18} />Survival
           </button>
         </div>
       </div>
